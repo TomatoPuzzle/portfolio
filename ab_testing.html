@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Miraj Ahmed</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="img/M.png" rel="icon">
+  <link href="img/logo.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+</head>
+
+<body class="portfolio-details-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename">Miraj Ahmed</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Project Details</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Project Details</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Portfolio Details Section -->
+    <!-- Portfolio Details Section -->
+    <section id="portfolio-details" class="portfolio-details section">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row justify-content-between gy-4 mt-4">
+
+          <div class="col-lg-8" data-aos="fade-up">
+            <div class="portfolio-description">
+              <h2>A/B Testing: Unveiling User Engagement</h2>
+              <p>This case study delves into the intricate relationship between <strong>website themes</strong> and
+                <strong>user behavior</strong>, using a comprehensive dataset from <strong>statso.io</strong>.
+              </p>
+
+              <u>View the whole notebook below, also the details are followed the notebook.</u>
+              <br><br>
+
+              <p>
+                <iframe
+                  src="https://www.kaggle.com/embed/mirajahmedlearns/a-b-testing-of-themes-using-python?kernelSessionId=140454144"
+                  height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto"
+                  title="A/B Testing of Themes using Python"></iframe>
+              </p>
+
+              <h3>Exploratory Data Analysis (EDA): A Glimpse into User Engagement</h3>
+              <p>Our exploration began with an extensive dataset encompassing <strong>user engagement metrics</strong>
+                and <strong>demographic information</strong>. Through <strong>Click Through Rates</strong>,
+                <strong>Conversion Rates</strong>, <strong>Bounce Rates</strong>, <strong>Scroll Depths</strong>, and
+                <strong>Ages</strong>, vivid visualizations unveiled patterns and differences associated with different
+                themes. <strong>Box plots</strong>, <strong>scatter plots</strong>, <strong>histograms</strong>, and
+                <strong>bar charts</strong> illuminated trends that fueled our curiosity to dive deeper.
+              </p>
+
+              <h3>Hypothesis Testing: The Influence of Themes Unveiled</h3>
+              <p><strong>Click Through Rate:</strong> We embarked on hypothesis testing with an intriguing question:
+                Does the choice of <strong>website theme</strong> influence the <strong>Click Through Rate</strong>? Our
+                <strong>null hypothesis</strong> suggested no difference, while the <strong>alternative
+                  hypothesis</strong> hinted at a distinct impact. With an <strong>independent t-test</strong>, we
+                meticulously compared Click Through Rates between <strong>"Dark Theme"</strong> and <strong>"Light
+                  Theme"</strong>. The verdict? A <strong>p-value</strong> of 0.048 led us to confidently reject the
+                null hypothesis, underscoring the significant difference in Click Through Rates.
+              </p>
+              <p><strong>Conversion Rate:</strong> The journey continued with <strong>Conversion Rates</strong>,
+                prompting us to examine whether themes played a role in <strong>user sign-ups</strong>. Null and
+                alternative hypotheses were framed, and an <strong>independent t-test</strong> ensued. The outcome
+                surprised us—while the Conversion Rate <strong>p-value</strong> stood at 0.635, we couldn't reject the
+                null hypothesis. Themes seemed to have a negligible impact on conversions.</p>
+              <p><strong>Added_to_Cart:</strong> Cart interactions emerged as the next focal point. Could themes guide
+                users towards <strong>adding items to their carts</strong>? A <strong>chi-squared test</strong>
+                scrutinized the data, and the results painted a consistent picture. With a <strong>p-value</strong> of
+                0.717, we upheld the null hypothesis—themes, it appeared, held little sway over users' cart
+                interactions.</p>
+
+              <h3>The Bonferroni Correction: Guarding Against Type I Errors</h3>
+              <p>But, as any seasoned statistician knows, multiple hypothesis tests invite the specter of inflated
+                <strong>Type I errors</strong>. Enter the <strong>Bonferroni correction</strong>—an armor against
+                erroneous conclusions. We deployed this correction method to meticulously adjust significance levels,
+                ensuring that our conclusions remained steadfast and reliable. Through simulated scenarios, we validated
+                the correction's efficacy, observing an observed <strong>Type I error rate</strong> of 0.016—effectively
+                aligned with the adjusted significance level of 0.0167.
+              </p>
+
+              <h3>Conclusion: Navigating User Engagement with Precision</h3>
+              <p>In this captivating journey, our exploration and analyses have cast a revealing light on the intricate
+                dance between <strong>website themes</strong> and <strong>user engagement</strong>. While Click Through
+                Rates demonstrated sensitivity to theme changes, Conversion Rates and Cart Interactions remained
+                steadfast in the face of aesthetic variations. Our meticulous deployment of the Bonferroni correction
+                fortified our findings, offering a beacon for <strong>designers</strong>, <strong>developers</strong>,
+                and <strong>marketers</strong>.</p>
+              <p>User engagement isn't just a buzzword—it's an <strong>art</strong> and a <strong>science</strong>. By
+                fusing empirical insights with methodological rigor, we've not only deepened our understanding but also
+                empowered decision-makers to navigate the virtual landscape with precision. Armed with data-driven
+                insights, the digital realm now holds the promise of crafting user experiences that transcend trends and
+                resonate with the heart of engagement.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="portfolio-info">
+              <h3>Project information</h3>
+              <ul>
+                <li><strong>Category</strong>: Data Analysis</li>
+                <li><strong>Technology</strong>: Python, Pandas, Numpy, Matplotlib</li>
+                <li><strong>Concept</strong>: Hypothesis Testing, Bonferroni correction
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Details Section -->
+
+
+  </main>
+
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Miraj Ahmed</strong> <span>All Rights Reserved</span>
+        </p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://twitter.com/GeekyButton"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.linkedin.com/in/mirajsym/"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Template by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Redesigned by <a href="https://twitter.com/GeekyButton">Miraj Ahmed</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
