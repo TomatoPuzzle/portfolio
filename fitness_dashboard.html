@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Miraj Ahmed</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="img/M.png" rel="icon">
+  <link href="img/logo.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+</head>
+
+<body class="portfolio-details-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename">Miraj Ahmed</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Project Details</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Project Details</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Portfolio Details Section -->
+    <section id="portfolio-details" class="portfolio-details section">
+      <div class="container" data-aos="fade-up">
+
+        <!-- Centered Portfolio Description Section -->
+        <div class="row justify-content-center gy-4 mt-4">
+          <div class="col-lg-8" data-aos="fade-up">
+            <div class="portfolio-description">
+              <h2>Fitness Center Analytics Dashboard</h2>
+
+              <h3>Project Overview</h3>
+              <p>
+                The <strong>Fitness Center Analytics Dashboard</strong>, built in Power BI, enables fitness managers and
+                trainers
+                to monitor memberships, engagement, finances, and member wellness. By integrating user demographics,
+                payments,
+                expenses, and activity data, the dashboard provides a holistic view of gym performance. It is designed
+                with three
+                modules: Overview, Member, and Calculator, ensuring both operational and individual-level insights.
+              </p>
+              <br>
+              <img src="https://i.postimg.cc/L51LjzWR/overview.jpg" alt="Overview page" title="fitness_center_dashboard"
+                class="img-fluid" />
+              <img src="https://i.postimg.cc/gcCvmTw0/Calculator.jpg" alt="Fitness Center Analytics Dashboard"
+                title="fitness_center_dashboard" class="img-fluid" />
+              <img src="https://i.postimg.cc/W1jgJqwL/Member.jpg" alt="Fitness Center Analytics Dashboard"
+                title="fitness_center_dashboard" class="img-fluid" />
+              <img src="https://i.postimg.cc/Pq5DSG7S/data-model.jpg" alt="Fitness Center Analytics Dashboard"
+                title="fitness_center_dashboard" class="img-fluid" />
+
+              <h3>Situation</h3>
+              <p>
+                Fitness centers often struggle with fragmented data spread across multiple spreadsheets or systems.
+                Tracking
+                memberships, renewals, financial performance, and member health progress requires manual reporting,
+                which is
+                time-consuming and prone to errors.
+              </p>
+
+              <h3>Task</h3>
+              <p>
+                The objective was to design a unified solution that automates reporting and enables stakeholders to:
+              </p>
+              <ul>
+                <li>Track membership activity and renewal trends.</li>
+                <li>Monitor financial performance such as revenue, expenses, and profit.</li>
+                <li>Provide member-level insights into BMI, BMR, and calorie goals.</li>
+                <li>Enhance decision-making through interactive and dynamic analytics.</li>
+              </ul>
+
+              <h3>Action</h3>
+              <p>
+                The project was executed by designing both a robust <strong>data model</strong> and an engaging set of
+                dashboard pages.
+              </p>
+              <ul>
+                <li>
+                  <h4>Data Model</h4>
+                  <ul>
+                    <li>The central Users table stores demographics, health metrics (BMI, BMR, weight, goals), and
+                      trainer assignments.</li>
+                    <li>Payments and Expenses tables manage financial transactions, linked with a Calendar table for
+                      time intelligence such as monthly revenue and profit trends.</li>
+                    <li>Slicer tables (AgeSlider, GenderSlider, WeightSlider, HeightSlider, ActivityFactor) enable
+                      dynamic filtering for personalized analytics.</li>
+                    <li>A dedicated measure table consolidates all DAX measures including BMI calculation, calorie
+                      recommendations, membership splits, and engagement score.</li>
+                  </ul>
+                </li>
+                <li>
+                  <h4>Dashboard Pages</h4>
+                  <ul>
+                    <li><strong>Overview Page:</strong> Provides KPIs such as users, trainers, active members,
+                      engagement score, financial outcomes (revenue, expenses, profit), and membership breakdowns.</li>
+                    <li><strong>Member Page:</strong> Offers insights into user distribution by age, gender, and
+                      membership, with detailed member-level information such as BMI, goals, progress, and trainer
+                      linkage.</li>
+                    <li><strong>Calculator Page:</strong> Contains an interactive BMI and Calorie Calculator where users
+                      input weight, height, age, and activity levels. Outputs include BMR, TDEE, and calorie goals for
+                      maintenance or weight loss.</li>
+                  </ul>
+                </li>
+              </ul>
+
+              <h3>Result</h3>
+              <p>
+                The <strong>Fitness Center Analytics Dashboard</strong> delivers:
+              </p>
+              <ul>
+                <li>A centralized analytics hub for membership, financial, and health data.</li>
+                <li>Automated insights that replace manual reporting with real-time dashboards.</li>
+                <li>Actionable metrics on member engagement and trainer performance.</li>
+                <li>Personalized tracking of BMI and calorie intake, supporting fitness goals.</li>
+                <li>Improved decision-making through dynamic filtering and drill-through analysis.</li>
+              </ul>
+
+              <br>
+              <p>
+                By combining a well-structured data model, automated DAX calculations, and user-friendly visuals, this
+                solution
+                empowers fitness centers to drive member engagement, optimize financial performance, and support
+                individual wellness journeys.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+
+  </main>
+
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Miraj Ahmed</strong> <span>All Rights Reserved</span>
+        </p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://twitter.com/GeekyButton"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.linkedin.com/in/mirajsym/"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Template by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Redesigned by <a href="https://twitter.com/GeekyButton">Miraj Ahmed</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
