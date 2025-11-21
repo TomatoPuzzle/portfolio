@@ -1,5 +1,5 @@
 /**
- * Main JS File - Fixed for Dark Mode Slider & Preloader
+ * Main JS File - Fixed for Mobile & Dark Mode
  */
 ;(function () {
   "use strict"
@@ -23,13 +23,10 @@
     // B. Apply Theme immediately
     html.setAttribute("data-theme", currentTheme)
 
-    // C. Sync the slider position if it exists
+    // C. Sync the slider position
     if (toggleCheckbox) {
-      if (currentTheme === "dark") {
-        toggleCheckbox.checked = true
-      } else {
-        toggleCheckbox.checked = false
-      }
+      // Set checkbox state based on theme
+      toggleCheckbox.checked = currentTheme === "dark"
 
       // D. Event Listener for Slider Change
       toggleCheckbox.addEventListener("change", function (e) {
@@ -43,12 +40,48 @@
       })
     }
   }
-  // Run immediately
+  // Run immediately so theme applies before page finishes loading
   initDarkMode()
 
   /**
    * ---------------------------------------------------------
-   * 2. PRELOADER (Fixes the "Stuck Loading" issue)
+   * 2. MOBILE NAVIGATION (The Fix)
+   * ---------------------------------------------------------
+   */
+  const mobileNavToggleBtn = document.querySelector(".mobile-nav-toggle")
+
+  function mobileNavToogle() {
+    document.querySelector("body").classList.toggle("mobile-nav-active")
+    mobileNavToggleBtn.classList.toggle("bi-list")
+    mobileNavToggleBtn.classList.toggle("bi-x")
+  }
+
+  if (mobileNavToggleBtn) {
+    mobileNavToggleBtn.addEventListener("click", mobileNavToogle)
+  }
+
+  // Close mobile nav when a link is clicked
+  document.querySelectorAll("#navmenu a").forEach((navmenu) => {
+    navmenu.addEventListener("click", () => {
+      if (document.querySelector(".mobile-nav-active")) {
+        mobileNavToogle()
+      }
+    })
+  })
+
+  // Toggle mobile nav dropdowns (if any)
+  document.querySelectorAll(".navmenu .toggle-dropdown").forEach((navmenu) => {
+    navmenu.addEventListener("click", function (e) {
+      e.preventDefault()
+      this.parentNode.classList.toggle("active")
+      this.parentNode.nextElementSibling.classList.toggle("dropdown-active")
+      e.stopImmediatePropagation()
+    })
+  })
+
+  /**
+   * ---------------------------------------------------------
+   * 3. PRELOADER
    * ---------------------------------------------------------
    */
   const preloader = document.querySelector("#preloader")
@@ -60,7 +93,7 @@
 
   /**
    * ---------------------------------------------------------
-   * 3. SCROLL & NAVIGATION
+   * 4. SCROLL EFFECTS
    * ---------------------------------------------------------
    */
   function toggleScrolled() {
@@ -79,38 +112,6 @@
   }
   document.addEventListener("scroll", toggleScrolled)
   window.addEventListener("load", toggleScrolled)
-
-  // Mobile Nav Toggle
-  const mobileNavToggleBtn = document.querySelector(".mobile-nav-toggle")
-  function mobileNavToogle() {
-    document.querySelector("body").classList.toggle("mobile-nav-active")
-    if (mobileNavToggleBtn) {
-      mobileNavToggleBtn.classList.toggle("bi-list")
-      mobileNavToggleBtn.classList.toggle("bi-x")
-    }
-  }
-  if (mobileNavToggleBtn) {
-    mobileNavToggleBtn.addEventListener("click", mobileNavToogle)
-  }
-
-  // Hide mobile nav on same-page links
-  document.querySelectorAll("#navmenu a").forEach((navmenu) => {
-    navmenu.addEventListener("click", () => {
-      if (document.querySelector(".mobile-nav-active")) {
-        mobileNavToogle()
-      }
-    })
-  })
-
-  // Toggle mobile nav dropdowns
-  document.querySelectorAll(".navmenu .toggle-dropdown").forEach((navmenu) => {
-    navmenu.addEventListener("click", function (e) {
-      e.preventDefault()
-      this.parentNode.classList.toggle("active")
-      this.parentNode.nextElementSibling.classList.toggle("dropdown-active")
-      e.stopImmediatePropagation()
-    })
-  })
 
   // Scroll Top Button
   let scrollTop = document.querySelector(".scroll-top")
@@ -135,11 +136,11 @@
 
   /**
    * ---------------------------------------------------------
-   * 4. LIBRARIES (AOS, Swiper, Isotope, GLightbox)
+   * 5. VENDOR LIBRARIES INIT
    * ---------------------------------------------------------
    */
 
-  // AOS (Animation on Scroll)
+  // AOS Animation
   function aosInit() {
     if (typeof AOS !== "undefined") {
       AOS.init({
@@ -152,7 +153,7 @@
   }
   window.addEventListener("load", aosInit)
 
-  // Typed.js
+  // Typed.js (Typewriter effect)
   const selectTyped = document.querySelector(".typed")
   if (selectTyped && typeof Typed !== "undefined") {
     let typed_strings = selectTyped.getAttribute("data-typed-items")
@@ -178,7 +179,7 @@
     })
   }
 
-  // Isotope
+  // Isotope Layout (Portfolio Filter)
   document.querySelectorAll(".isotope-layout").forEach(function (isotopeItem) {
     let layout = isotopeItem.getAttribute("data-layout") ?? "masonry"
     let filter = isotopeItem.getAttribute("data-default-filter") ?? "*"
@@ -223,15 +224,6 @@
         )
       })
   })
-
-  // FAQ Toggle
-  document
-    .querySelectorAll(".faq-item h3, .faq-item .faq-toggle")
-    .forEach((faqItem) => {
-      faqItem.addEventListener("click", () => {
-        faqItem.parentNode.classList.toggle("faq-active")
-      })
-    })
 
   // Swiper Slider
   function initSwiper() {

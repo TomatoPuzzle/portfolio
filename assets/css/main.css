@@ -1026,19 +1026,74 @@ section {
   z-index: 2;
 }
 /* --------------------------------------------------------------
-# Mobile Safety (Tables & Iframes)
+# Mobile Navigation Fixes
 -------------------------------------------------------------- */
-@media (max-width: 768px) {
-  /* Allow tables to scroll sideways on phones */
-  .table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+
+@media (max-width: 1199px) {
+  /* Adjust Header Container for Mobile */
+  .header .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  /* Position the Theme Switch correctly on mobile */
+  .theme-switch-wrapper {
+    margin-left: auto; /* Push to the right */
+    margin-right: 15px; /* Space between switch and hamburger */
+  }
+
+  /* Ensure Hamburger is visible and clickable */
+  .mobile-nav-toggle {
+    display: block; /* Make sure it's visible */
+    font-size: 28px;
+    color: var(--color-heading);
+    cursor: pointer;
+    z-index: 9999; /* Ensure it's on top */
+  }
+
+  /* Mobile Navigation Overlay Styles */
+  .navmenu ul {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9998; /* Behind the toggle button */
+    background-color: rgba(var(--color-bg-rgb), 0.95); /* Full screen overlay */
+    overflow-y: auto;
+    transition: 0.3s;
+    padding: 60px 20px 20px 20px; /* Space for top header */
+    flex-direction: column; /* Stack links vertically */
+    align-items: flex-start; /* Align left */
+    margin: 0;
+    border-left: 1px solid var(--color-border);
   }
   
-  /* Ensure Iframes (PowerBI/Kaggle) don't overflow */
-  iframe {
-    max-width: 100%;
-    height: auto;
-    min-height: 400px; /* Ensure charts are tall enough to read */
+  /* When Mobile Nav is Active */
+  body.mobile-nav-active .navmenu ul {
+    display: flex; /* Show the menu */
   }
+
+  /* Styling links in mobile menu */
+  .navmenu a {
+    display: block;
+    padding: 15px 0;
+    font-size: 18px;
+    width: 100%;
+    color: var(--color-heading);
+  }
+  
+  .navmenu a:hover, .navmenu a.active {
+      color: var(--color-accent);
+      background: transparent;
+  }
+}
+
+/* Add RGB variables for background opacity to work */
+:root {
+    --color-bg-rgb: 255, 255, 255; /* White */
+}
+[data-theme="dark"] {
+    --color-bg-rgb: 10, 17, 32; /* Dark Blue */
 }
