@@ -1,19 +1,27 @@
 /* --------------------------------------------------------------
-# Modern & Minimalist Configuration (Light Mode Defaults)
+# COOL DATA VIBE Configuration
 -------------------------------------------------------------- */
 :root {
   /* Typography */
   --font-default: "Inter", system-ui, -apple-system, sans-serif;
   --font-heading: "Inter", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-  /* Color Palette (Light) */
+  /* Light Mode Palette */
   --color-bg: #ffffff;
   --color-bg-light: #f8f9fa;
   --color-text: #4b5563;        /* Slate 600 */
   --color-heading: #111827;     /* Slate 900 */
-  --color-accent: #0b63ef;      /* Brand Blue */
-  --color-accent-hover: #004bbd;
-  --color-border: #e5e7eb;      /* Light Grey Border */
+  --color-border: #e5e7eb;      /* Light Grey */
+
+  /* TECH ACCENTS (Gradients & Glows) */
+  --color-accent: #0b63ef;      /* Fallback Solid Blue */
+  --gradient-tech: linear-gradient(135deg, #0b63ef, #00d4ff); /* Blue to Cyan */
+  --gradient-glow: 0 0 20px rgba(11, 99, 239, 0.3);           /* Soft Light Glow */
+
+  /* Background Pattern (Subtle Matrix Dots) */
+  --bg-pattern: radial-gradient(#e5e7eb 1px, transparent 1px);
+  --bg-size: 20px 20px;
 
   /* Effects */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -23,22 +31,31 @@
 }
 
 /* --------------------------------------------------------------
-# Dark Mode Configuration (Overrides)
+# Dark Mode Configuration (The "Matrix/Cyber" Look)
 -------------------------------------------------------------- */
 [data-theme="dark"] {
-  /* Dark Mode Color Palette (Deep Navy/Slate) */
-  --color-bg: #0f172a;          /* Dark Blue/Black Background */
-  --color-bg-light: #1e293b;    /* Lighter Blue/Grey for Cards */
-  --color-text: #cbd5e1;        /* Light Grey Text */
-  --color-heading: #f8fafc;     /* White Headings */
-  --color-border: #334155;      /* Dark Blue Borders */
-  --color-accent: #3b82f6;      /* Brighter Blue for contrast */
-  --color-accent-hover: #60a5fa;
+  /* Dark Mode Palette (Deep Space Blue) */
+  --color-bg: #0a1120;          /* Darker, richer blue-black */
+  --color-bg-light: #162032;    /* Slightly lighter for cards */
+  --color-text: #94a3b8;        /* Cool grey text */
+  --color-heading: #f1f5f9;     /* Bright white-blue headings */
+  --color-border: #1e293b;      /* Subtle dark borders */
 
-  /* Adjust Shadows for Dark Mode */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  /* TECH ACCENTS (Neon Glows) */
+  --color-accent: #3b82f6;
+  --gradient-tech: linear-gradient(135deg, #3b82f6, #2dd4bf); /* Neon Blue to Teal */
+  --gradient-glow: 0 0 25px rgba(59, 130, 246, 0.5);          /* Strong neon glow */
+
+  /* Background Pattern (Glowing Cyber Grid) */
+  --bg-pattern: 
+      linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px), 
+      linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+  --bg-size: 30px 30px;
+
+  /* Adjust Shadows for depth */
+  --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 6px 10px -1px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 15px 25px -3px rgba(0, 0, 0, 0.5);
 }
 
 /* --------------------------------------------------------------
@@ -47,11 +64,18 @@
 body {
   font-family: var(--font-default);
   color: var(--color-text);
+  
+  /* Applied Data Vibe Background */
   background-color: var(--color-bg);
+  background-image: var(--bg-pattern);
+  background-size: var(--bg-size);
+  
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden; /* Prevent horizontal scroll */
-  transition: background-color 0.3s, color 0.3s; /* Smooth theme transition */
+  overflow-x: hidden;
+  
+  /* Smooth Theme Transition */
+  transition: background-color 0.3s, color 0.3s, background-image 0.3s;
 }
 
 a {
@@ -61,7 +85,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-accent-hover);
+  color: #00d4ff; /* Cyan hover */
   text-decoration: none;
 }
 
@@ -78,32 +102,18 @@ h1, h2, h3, h4, h5, h6 {
 .header {
   padding: 15px 0;
   z-index: 997;
-  background: rgba(255, 255, 255, 0.85); /* Light Mode Translucent */
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0,0,0,0.05);
   transition: all 0.5s;
 }
 
-/* Dark Mode Header Override */
 [data-theme="dark"] .header {
-  background: rgba(15, 23, 42, 0.85);    /* Dark Mode Translucent */
+  background: rgba(10, 17, 32, 0.85); /* Dark Glass */
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
-/* FIX: Cards in Dark Mode (Data Models, Modules, etc.) */
-[data-theme="dark"] .card.bg-light {
-  background-color: var(--color-bg-light) !important; /* Force dark grey background */
-  border: 1px solid var(--color-border) !important;   /* Subtle border */
-}
 
-[data-theme="dark"] .card-body h5 {
-  color: var(--color-accent) !important; /* Make titles Blue */
-}
-
-[data-theme="dark"] .card-body ul li,
-[data-theme="dark"] .card-body p {
-  color: var(--color-text) !important;   /* Make text Light Grey */
-}
 .header .logo h1 {
   font-size: 24px;
   margin: 0;
@@ -136,26 +146,10 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(11, 99, 239, 0.08);
 }
 
-/* Dark Mode Active Link Fix */
 [data-theme="dark"] .navmenu a:hover,
 [data-theme="dark"] .navmenu a.active {
+  color: #fff;
   background: rgba(59, 130, 246, 0.15);
-}
-
-/* Theme Toggle Button */
-.theme-toggle {
-  cursor: pointer;
-  font-size: 20px;
-  margin-left: 20px;
-  color: var(--color-heading);
-  transition: 0.3s;
-  display: flex;
-  align-items: center;
-}
-
-.theme-toggle:hover {
-  color: var(--color-accent);
-  transform: rotate(15deg);
 }
 
 /* Mobile Nav Toggle */
@@ -170,31 +164,10 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 1199px) {
   .navmenu ul { display: none; }
-  .theme-toggle { margin-left: auto; margin-right: 10px; }
 }
 
 /* --------------------------------------------------------------
-# Eye-Catchy Theme Toggle Button
--------------------------------------------------------------- */
-.theme-toggle {
-  cursor: pointer;
-  width: 44px;
-  height: 44px;
-  margin-left: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%; /* Perfect circle */
-  background-color: var(--color-bg-light); /* Matches the theme card background */
-  border: 1px solid var(--color-border);
-  color: var(--color-heading);
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bouncy transition */
-  box-shadow: var(--shadow-sm);
-  font-size: 20px;
-}
-
-/* --------------------------------------------------------------
-# Text Slider Toggle Switch
+# Theme Switcher (Slider)
 -------------------------------------------------------------- */
 .theme-switch-wrapper {
   display: flex;
@@ -211,20 +184,22 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.5px;
 }
 
-/* The Switch Container */
+[data-theme="dark"] .theme-label {
+  color: var(--color-heading);
+}
+
 .theme-switch {
   display: inline-block;
   height: 26px;
   position: relative;
   width: 50px;
-  margin-bottom: 0; /* Bootstrap fix */
+  margin-bottom: 0;
 }
 
 .theme-switch input {
-  display: none; /* Hide the default checkbox */
+  display: none;
 }
 
-/* The Slider (Track) */
 .slider {
   background-color: #ccc;
   bottom: 0;
@@ -236,7 +211,6 @@ h1, h2, h3, h4, h5, h6 {
   transition: .4s;
 }
 
-/* The Slider (Knob) */
 .slider:before {
   background-color: #fff;
   bottom: 3px;
@@ -249,7 +223,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-/* Rounded Sliders */
 .slider.round {
   border-radius: 34px;
 }
@@ -258,18 +231,12 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
 }
 
-/* CHECKED STATE (Dark Mode Active) */
 input:checked + .slider {
-  background-color: var(--color-accent); /* Turns Blue */
+  background: var(--gradient-tech); /* Gradient Slider in active state */
 }
 
 input:checked + .slider:before {
-  transform: translateX(24px); /* Moves Knob Right */
-}
-
-/* Dark Mode Text Adjustment */
-[data-theme="dark"] .theme-label {
-  color: var(--color-heading);
+  transform: translateX(24px);
 }
 
 /* Mobile Adjustment */
@@ -279,13 +246,7 @@ input:checked + .slider:before {
     margin-right: 15px;
   }
 }
-/* Mobile Adjustment */
-@media (max-width: 1199px) {
-  .theme-toggle {
-    margin-left: auto;
-    margin-right: 15px;
-  }
-}
+
 /* --------------------------------------------------------------
 # Hero Section
 -------------------------------------------------------------- */
@@ -329,7 +290,9 @@ input:checked + .slider:before {
 }
 
 .hero .highlight {
-  color: var(--color-accent);
+  background: var(--gradient-tech);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: 700;
 }
 
@@ -339,7 +302,7 @@ input:checked + .slider:before {
   justify-content: center;
 }
 
-/* Buttons */
+/* Gradient Tech Buttons */
 .btn-custom {
   display: inline-flex;
   align-items: center;
@@ -349,29 +312,16 @@ input:checked + .slider:before {
   font-weight: 600;
   border-radius: 50px;
   transition: 0.3s;
-  border: 1px solid var(--color-border);
-  background: var(--color-bg);
-  color: var(--color-heading);
+  border: none;
+  background: var(--gradient-tech);
+  color: #fff;
+  box-shadow: var(--shadow-md);
 }
 
 .btn-custom:hover {
-  border-color: var(--color-heading);
-  background: var(--color-heading);
-  color: var(--color-bg); /* Inverse text color on hover */
-  transform: translateY(-2px);
-}
-
-/* FIX: Hero Button Text in Dark Mode */
-[data-theme="dark"] .btn-custom {
-  background-color: var(--color-heading); /* White background */
-  color: #000000 !important;              /* Force Black text */
-  border-color: var(--color-heading);
-}
-
-[data-theme="dark"] .btn-custom:hover {
-  background-color: var(--color-accent);  /* Blue background on hover */
-  color: #ffffff !important;              /* White text on hover */
-  border-color: var(--color-accent);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg), var(--gradient-glow);
+  color: #fff;
 }
 
 @media (max-width: 768px) {
@@ -402,14 +352,13 @@ section {
   padding-bottom: 15px;
 }
 
-/* Blue Underline */
 .section-title h2::after {
   content: "";
   position: absolute;
   display: block;
   width: 50px;
   height: 4px;
-  background: var(--color-accent);
+  background: var(--gradient-tech);
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -441,11 +390,11 @@ section {
   transition: 0.3s;
 }
 
-/* FIX: Profile Image in Dark Mode (Remove white square) */
+/* Dark Mode Profile Fix */
 [data-theme="dark"] .about .image-wrapper img {
   background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 25px rgba(59, 130, 246, 0.2); /* Subtle blue glow */
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.2);
 }
 
 .about .content h3 {
@@ -467,11 +416,13 @@ section {
   margin: 20px 0;
 }
 
+/* Tech Tag Style */
 .skill-tag {
+  font-family: var(--font-mono); /* Monospace for code feel */
   background: var(--color-bg-light);
   padding: 8px 16px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--color-heading);
   border: 1px solid var(--color-border);
@@ -479,9 +430,14 @@ section {
 }
 
 .skill-tag:hover {
+  /* Gradient border trick */
   background: var(--color-bg);
-  border-color: var(--color-accent);
+  border-color: transparent;
+  background-image: linear-gradient(var(--color-bg), var(--color-bg)), var(--gradient-tech);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   color: var(--color-accent);
+  box-shadow: var(--gradient-glow);
 }
 
 /* --------------------------------------------------------------
@@ -533,7 +489,7 @@ section {
 }
 
 /* --------------------------------------------------------------
-# Portfolio / Certifications / Cards
+# Portfolio / Cards (Tech Nodes)
 -------------------------------------------------------------- */
 .bg-light {
   background-color: var(--color-bg-light) !important;
@@ -564,7 +520,7 @@ section {
 
 .portfolio-filters li:hover,
 .portfolio-filters li.filter-active {
-  background: var(--color-accent);
+  background: var(--gradient-tech);
   color: #fff;
   box-shadow: var(--shadow-md);
 }
@@ -573,49 +529,48 @@ section {
   margin-bottom: 30px;
 }
 
-/* Card Styling */
+/* Card Styling - The "Active Node" Look */
 .portfolio-wrap {
-  background: var(--color-bg); /* Adapts to Dark Mode */
+  background: var(--color-bg);
   border-radius: var(--radius-card);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-border);
-  transition: 0.4s ease-in-out;
+  border: 1px solid var(--color-border); /* Default border */
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy */
   height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-/* FIX: Ensure Cards have proper background in Dark Mode */
-[data-theme="dark"] .portfolio-wrap,
-[data-theme="dark"] .info-wrap,
-[data-theme="dark"] .portfolio-info {
+/* Dark Mode Card Override */
+[data-theme="dark"] .portfolio-wrap {
   background-color: var(--color-bg-light);
   border-color: var(--color-border);
 }
 
+/* Hover Effect: Gradient Border & Glow */
 .portfolio-wrap:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(11, 99, 239, 0.3);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-lg), var(--gradient-glow);
+  border-color: transparent;
+  background-image: linear-gradient(var(--color-bg-light), var(--color-bg-light)), var(--gradient-tech);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 }
 
 .portfolio-wrap img {
   width: 100%;
-  height: auto;
+  height: auto; /* Full image fix */
   display: block;
   transition: 0.4s;
   border-bottom: 1px solid var(--color-border);
 }
 
-/* Project Info & Links */
 .portfolio-info {
   padding: 20px 20px 60px 20px;
   position: relative;
   flex-grow: 1;
-  background-color: var(--color-bg);
-  border-radius: var(--radius-card); /* Ensure rounded corners if standalone */
 }
 
 .portfolio-info h4 {
@@ -623,7 +578,6 @@ section {
   font-weight: 700;
   margin-bottom: 8px;
   color: var(--color-heading);
-  line-height: 1.3;
 }
 
 .portfolio-info p {
@@ -632,7 +586,7 @@ section {
   margin-bottom: 0;
 }
 
-/* Visible Link Button */
+/* Link Button (Circle) */
 .portfolio-info .details-link,
 .portfolio-info .preview-link {
   position: absolute;
@@ -653,15 +607,14 @@ section {
   z-index: 2;
 }
 
-/* FIX: Button Color in Dark Mode */
+/* Dark Mode Button Fix */
 [data-theme="dark"] .portfolio-info .details-link {
   background-color: rgba(255, 255, 255, 0.1);
-  color: var(--color-heading);
+  color: #fff;
 }
 
-.portfolio-info .details-link:hover,
-.portfolio-info .preview-link:hover {
-  background-color: var(--color-accent);
+.portfolio-info .details-link:hover {
+  background: var(--gradient-tech);
   color: #fff;
   transform: scale(1.1);
 }
@@ -683,6 +636,10 @@ section {
   margin-bottom: 30px;
 }
 
+[data-theme="dark"] .info-wrap {
+  background-color: var(--color-bg-light);
+}
+
 .info-item {
   text-align: center;
   padding: 20px;
@@ -702,15 +659,15 @@ section {
   transition: 0.3s;
 }
 
-/* FIX: Contact Icons in Dark Mode */
 [data-theme="dark"] .info-item i {
   background: rgba(255, 255, 255, 0.05);
-  color: var(--color-accent);
+  color: #fff;
 }
 
 .info-item:hover i {
-  background: var(--color-accent);
+  background: var(--gradient-tech);
   color: white;
+  box-shadow: var(--gradient-glow);
 }
 
 .info-item h3 {
@@ -738,7 +695,7 @@ section {
   color: var(--color-text);
 }
 
-/* FIX: Form Inputs in Dark Mode */
+/* Dark Mode Inputs */
 [data-theme="dark"] input, 
 [data-theme="dark"] textarea {
   background-color: var(--color-bg-light);
@@ -754,8 +711,8 @@ section {
 }
 
 .sample-contact-form button {
-  background: var(--color-heading);
-  color: var(--color-bg);
+  background: var(--gradient-tech);
+  color: #fff;
   border: 0;
   padding: 14px 45px;
   border-radius: 50px;
@@ -763,13 +720,12 @@ section {
   transition: 0.3s;
   cursor: pointer;
   margin-top: 20px;
+  box-shadow: var(--shadow-md);
 }
 
 .sample-contact-form button:hover {
-  background: var(--color-accent);
-  color: white;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg), var(--gradient-glow);
 }
 
 /* --------------------------------------------------------------
@@ -799,14 +755,15 @@ section {
 }
 
 .footer .social-links a:hover {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
+  background: var(--gradient-tech);
+  border-color: transparent;
   color: #fff;
   transform: translateY(-3px);
+  box-shadow: var(--gradient-glow);
 }
 
 /* --------------------------------------------------------------
-# Preloader & Scroll Top
+# Utilities (Preloader & Scroll Top)
 -------------------------------------------------------------- */
 #preloader {
   position: fixed;
@@ -842,7 +799,7 @@ section {
   right: 20px;
   bottom: 20px;
   z-index: 99999;
-  background-color: var(--color-accent);
+  background: var(--gradient-tech);
   width: 45px;
   height: 45px;
   border-radius: 50px;
@@ -850,6 +807,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--shadow-md);
 }
 
 .scroll-top i {
@@ -859,12 +817,31 @@ section {
 }
 
 .scroll-top:hover {
-  background-color: var(--color-accent-hover);
+  box-shadow: var(--gradient-glow);
+  transform: translateY(-3px);
 }
 
 .scroll-top.active {
   visibility: visible;
   opacity: 1;
+}
+
+/* --------------------------------------------------------------
+# Fix: Cards in Dark Mode (For generic cards like Data Model)
+-------------------------------------------------------------- */
+[data-theme="dark"] .card.bg-light {
+  background-color: var(--color-bg-light) !important; 
+  border: 1px solid var(--color-border) !important;
+}
+
+[data-theme="dark"] .card-body h5,
+[data-theme="dark"] .card-body h6 {
+  color: #fff !important; /* White Titles in cards */
+}
+
+[data-theme="dark"] .card-body ul li,
+[data-theme="dark"] .card-body p {
+  color: var(--color-text) !important;
 }
 
 /* --------------------------------------------------------------
@@ -874,7 +851,7 @@ section {
   padding: 40px 0;
   position: relative;
   background: transparent;
-  margin-top: 60px; /* Space for fixed header */
+  margin-top: 60px;
 }
 
 .page-title h1 {
@@ -884,7 +861,6 @@ section {
   margin-bottom: 10px;
 }
 
-/* Breadcrumbs */
 .breadcrumbs ol {
   display: flex;
   flex-wrap: wrap;
@@ -916,7 +892,7 @@ section {
   color: var(--color-accent);
 }
 
-/* Project Info Sidebar */
+/* Sidebar Info */
 .portfolio-info h3 {
   font-size: 22px;
   font-weight: 700;
@@ -965,7 +941,7 @@ section {
 
 .portfolio-info .btn-visit {
   display: inline-block;
-  background: var(--color-accent);
+  background: var(--gradient-tech);
   color: #fff;
   padding: 8px 25px;
   border-radius: 50px;
@@ -973,9 +949,28 @@ section {
   font-weight: 600;
   margin-top: 10px;
   transition: 0.3s;
+  box-shadow: var(--shadow-sm);
 }
 
 .portfolio-info .btn-visit:hover {
-  background: var(--color-accent-hover);
   transform: translateY(-2px);
+  box-shadow: var(--gradient-glow);
+}
+
+/* --------------------------------------------------------------
+# Mobile Safety (Tables & Iframes)
+-------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Allow tables to scroll sideways on phones */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Ensure Iframes (PowerBI/Kaggle) don't overflow */
+  iframe {
+    max-width: 100%;
+    height: auto;
+    min-height: 400px; /* Ensure charts are tall enough to read */
+  }
 }
