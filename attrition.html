@@ -34,13 +34,19 @@
       </a>
 
       <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#portfolio">Projects</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+
+
+
+        <div class="theme-switch-wrapper">
+          <span class="theme-label">Light</span>
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+          </label>
+          <span class="theme-label">Dark</span>
+        </div>
+
+
       </nav>
 
     </div>
@@ -122,7 +128,8 @@
               <h3>Approach</h3>
               <p>Our dataset included attributes such as <strong>satisfaction level</strong>, <strong>last
                   evaluation</strong>, <strong>tenure</strong>, <strong>salary</strong>, and
-                <strong>department</strong>.</p>
+                <strong>department</strong>.
+              </p>
 
               <ul>
                 <li><strong>EDA:</strong> Identified trends, cleaned duplicates, and encoded categorical variables.</li>
