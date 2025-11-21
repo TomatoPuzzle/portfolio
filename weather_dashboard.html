@@ -4,33 +4,24 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Miraj Ahmed</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Weather Dashboard | Miraj Ahmed</title>
+  <meta content="Real-time Power BI Weather Dashboard" name="description">
+  <meta content="Power BI, API Integration, Data Visualization, Weather" name="keywords">
 
-  <!-- Favicons -->
   <link href="img/M.webp" rel="icon">
   <link href="img/favicon.webp" rel="apple-touch-icon">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link rel="preload" href="assets/vendor/bootstrap/css/bootstrap.min.css" as="style">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <link rel="preload" href="assets/vendor/bootstrap-icons/bootstrap-icons.css" as="style">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" media="print"
-    onload="this.media='all'">
-
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" media="print" onload="this.media='all'">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" media="print" onload="this.media='all'">
-
-  <!-- Main CSS File -->
-  <link rel="preload" href="assets/css/main.css" as="style">
   <link href="assets/css/main.css" rel="stylesheet">
-
 </head>
 
 <body class="portfolio-details-page">
@@ -39,11 +30,16 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
-        <h1 class="sitename">Miraj Ahmed</h1>
+        <h1 class="sitename">Miraj.</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
-
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#portfolio">Projects</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
@@ -52,145 +48,127 @@
 
   <main class="main">
 
-    <!-- Page Title -->
     <div class="page-title" data-aos="fade">
       <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Project Details</h1>
+        <h1 class="mb-2 mb-lg-0">Weather Dashboard</h1>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">Project Details</li>
+            <li><a href="index.html#portfolio">Projects</a></li>
+            <li class="current">Weather Dashboard</li>
           </ol>
         </nav>
       </div>
-    </div><!-- End Page Title -->
+    </div>
 
-    <!-- Portfolio Details Section -->
     <section id="portfolio-details" class="portfolio-details section">
-      <div class="container" data-aos="fade-up">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <!-- Centered Portfolio Description Section -->
-        <div class="row justify-content-center gy-4 mt-4">
-          <div class="col-lg-8" data-aos="fade-up">
-            <div class="portfolio-description">
-              <h2>Weather Dashboard</h2>
+        <div class="row gy-4">
 
-              <h3>Project Overview</h3>
-              <p>
-                The Weather Dashboard on Power BI delivers real-time weather insights collected from a live weather API.
-                Designed for daily automatic refresh, it enables users to monitor current and forecasted conditions with
-                clear and interactive visualizations.
-                This dashboard consolidates essential weather data in one place, making it useful for personal planning,
-                outdoor event management, and climate tracking.
+          <div class="col-lg-4 order-lg-2">
+            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
+              <h3>Project Information</h3>
+              <ul>
+                <li><strong>Category</strong>: Data Visualization / IoT</li>
+                <li><strong>Tool</strong>: Power BI</li>
+                <li><strong>Source</strong>: Live Weather API</li>
+                <li><strong>Features</strong>: Real-time Sync, Forecasting</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-8 order-lg-1">
+            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
+
+              <h2>Real-time Weather Analytics</h2>
+              <p class="lead">
+                Delivering live weather insights through a Power BI dashboard designed for automatic daily refresh,
+                integrating temperature, humidity, and forecasts into one interactive interface.
               </p>
-              <br>
 
-              <img src="img/portfolio/weather-dashboard.webp" alt="FYP Image 0" title="FYP Image 0" class="img-fluid" />
-
+              <div class="my-4">
+                <img [Image of Mobile App Interface] src="img/portfolio/weather-dashboard.webp"
+                  alt="Weather Dashboard Interface" class="img-fluid rounded shadow-sm w-100">
+              </div>
 
               <h3>Situation</h3>
               <p>
-                With climate conditions varying throughout the day, quick and accurate access to weather information is
-                essential.
-                Traditional weather updates may be delayed or scattered across multiple sources, making it harder for
-                users to make timely decisions.
+                Climate conditions vary constantly, making quick access to accurate information essential. Traditional
+                updates are often scattered across sources or delayed, hindering timely decision-making for events or
+                travel.
               </p>
 
               <h3>Task</h3>
               <p>
-                The aim was to create a central, real-time dashboard that updates automatically and integrates all
-                weather indicators—temperature, humidity, wind speed, precipitation, and forecasts—into a single,
-                interactive interface.
+                The goal was to create a centralized dashboard that auto-updates and consolidates all critical weather
+                metrics—temperature, wind, precipitation, and 7-day forecasts—into a single, easy-to-read view.
               </p>
 
               <h3>Action</h3>
-              <p>
-                The dashboard includes the following key features:
-              </p>
-              <ul>
-                <li>Real-time temperature readings with daily highs and lows.</li>
-                <li>Humidity and wind speed tracking for better environmental awareness.</li>
-                <li>Precipitation probability and rainfall amounts for event and travel planning.</li>
-                <li>7-day forecast visualization for forward-looking decisions.</li>
-                <li>Daily automatic refresh to ensure accuracy of data pulled from the live weather API.</li>
-              </ul>
+              <p>The dashboard was engineered with the following key capabilities:</p>
 
-              <p>
-                The dashboard’s interactive visuals allow users to filter by location and date, compare historical
-                patterns, and identify weather trends quickly.
+              <div class="row mt-3">
+                <div class="col-md-6 mb-3">
+                  <div class="p-3 border rounded bg-light h-100">
+                    <h6 class="fw-bold text-primary"><i class="bi bi-thermometer-half me-2"></i>Real-Time Monitoring
+                    </h6>
+                    <p class="small mb-0">Tracks current temperature, highs/lows, humidity, and wind speed for immediate
+                      situational awareness.</p>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div class="p-3 border rounded bg-light h-100">
+                    <h6 class="fw-bold text-primary"><i class="bi bi-cloud-rain me-2"></i>Predictive Analysis</h6>
+                    <p class="small mb-0">Visualizes precipitation probability and 7-day forecasts to aid in
+                      forward-looking planning.</p>
+                  </div>
+                </div>
+              </div>
+
+              <p class="mt-2">
+                Interactive filters allow users to drill down by location and date, comparing historical patterns to
+                identify trends quickly.
               </p>
 
               <h3>Result</h3>
-              <p>
-                The Weather Dashboard provides:
-              </p>
-              <ul>
-                <li>Reliable, real-time data for both casual users and professionals.</li>
-                <li>Time savings by consolidating all weather information in one interface.</li>
-                <li>Enhanced decision-making through accurate and updated climate metrics.</li>
-              </ul>
-              <br>
-              <p>
-                By combining automation, real-time updates, and user-friendly design, the Weather Dashboard ensures that
-                users can make informed decisions based on the most up-to-date weather information available.
-              </p>
-
-              <br>
-
+              <p>The Weather Dashboard delivers reliable, real-time data, saving time by consolidating scattered
+                information. It empowers users—from event planners to casual observers—to make informed decisions based
+                on the latest climate metrics.</p>
 
             </div>
           </div>
+
         </div>
 
       </div>
     </section>
 
-
-
   </main>
 
   <footer id="footer" class="footer">
-
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Miraj Ahmed</strong> <span>All Rights Reserved</span>
-        </p>
-      </div>
-      <div class="social-links d-flex justify-content-center">
+    <div class="container text-center">
+      <div class="social-links d-flex justify-content-center mb-3">
         <a href="https://twitter.com/symanto_"><i class="bi bi-twitter-x"></i></a>
         <a href="https://www.linkedin.com/in/mirajsym/"><i class="bi bi-linkedin"></i></a>
       </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Template by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        Redesigned by <a href="https://twitter.com/symanto_">Miraj Ahmed</a>
+      <div class="copyright">
+        <p>&copy; 2024 <strong>Miraj Ahmed</strong>. All Rights Reserved</p>
       </div>
     </div>
-
   </footer>
 
-  <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
   <div id="preloader"></div>
 
-  <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
 </body>
