@@ -962,7 +962,7 @@ section {
 
 /* 1. Animated Gradient Text for Name */
 .hero h1.gradient-text {
-  background: linear-gradient(300deg, var(--color-heading), var(--color-accent), #00d4ff, var(--color-heading));
+  background: linear-gradient(300deg, var(--color-heading), var(--color-accent), #c315e5dc, var(--color-heading));
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
