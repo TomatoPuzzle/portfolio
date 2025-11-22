@@ -13,6 +13,7 @@
   --color-text: #4b5563;        /* Slate 600 */
   --color-heading: #111827;     /* Slate 900 */
   --color-border: #e5e7eb;      /* Light Grey */
+  --color-bg-rgb: 255, 255, 255; /* White for RGBA */
 
   /* TECH ACCENTS (Gradients & Glows) */
   --color-accent: #0b63ef;      /* Fallback Solid Blue */
@@ -40,6 +41,7 @@
   --color-text: #94a3b8;        /* Cool grey text */
   --color-heading: #f1f5f9;     /* Bright white-blue headings */
   --color-border: #1e293b;      /* Subtle dark borders */
+  --color-bg-rgb: 10, 17, 32;   /* Dark Blue for RGBA */
 
   /* TECH ACCENTS (Neon Glows) */
   --color-accent: #3b82f6;
@@ -167,32 +169,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------------------------------------------------
-# Theme Switcher (Slider)
+# Theme Switcher (Icon Slider)
 -------------------------------------------------------------- */
 .theme-switch-wrapper {
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 25px;
 }
 
-.theme-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--color-text);
-  margin: 0 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-[data-theme="dark"] .theme-label {
-  color: var(--color-heading);
-}
-
+/* The Switch Container */
 .theme-switch {
-  display: inline-block;
-  height: 26px;
   position: relative;
-  width: 50px;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
   margin-bottom: 0;
 }
 
@@ -200,44 +190,64 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
+/* The Track */
 .slider {
-  background-color: #ccc;
-  bottom: 0;
+  position: absolute;
   cursor: pointer;
-  left: 0;
-  position: absolute;
-  right: 0;
   top: 0;
-  transition: .4s;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e2e8f0;
+  transition: 0.4s;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  overflow: hidden;
 }
 
+/* The Icons inside */
+.slider .bi {
+  font-size: 14px;
+  z-index: 1;
+  transition: 0.4s;
+}
+
+.sun-icon { color: #f59e0b; } /* Golden Sun */
+.moon-icon { color: #94a3b8; } /* Grey Moon */
+
+/* The Knob */
 .slider:before {
-  background-color: #fff;
-  bottom: 3px;
-  content: "";
-  height: 20px;
-  left: 3px;
   position: absolute;
-  transition: .4s;
-  width: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: 2;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.slider.round {
-  border-radius: 34px;
-}
+.slider.round { border-radius: 34px; }
+.slider.round:before { border-radius: 50%; }
 
-.slider.round:before {
-  border-radius: 50%;
-}
-
+/* Dark Mode State */
 input:checked + .slider {
-  background: var(--gradient-tech); /* Gradient Slider in active state */
+  background-color: #1e293b;
+  border-color: #334155;
 }
 
 input:checked + .slider:before {
-  transform: translateX(24px);
+  transform: translateX(28px);
+  background-color: var(--color-accent);
 }
+
+input:checked + .slider .sun-icon { color: #64748b; }
+input:checked + .slider .moon-icon { color: #f1f5f9; }
 
 /* Mobile Adjustment */
 @media (max-width: 1199px) {
@@ -282,6 +292,23 @@ input:checked + .slider:before {
   color: var(--color-heading);
 }
 
+/* Animated Gradient Text for Name */
+.hero h1.gradient-text {
+  background: linear-gradient(300deg, var(--color-heading), var(--color-accent), #d92eec, var(--color-heading));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-move 5s ease infinite;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .hero h2 {
   font-size: 26px;
   font-weight: 400;
@@ -289,12 +316,44 @@ input:checked + .slider:before {
   margin-bottom: 40px;
 }
 
-.hero .highlight {
-  background: var(--gradient-tech);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
+/* Typewriter Cursor */
+.typed-cursor {
+  color: var(--color-accent);
+  font-size: 30px;
 }
+
+/* Floating Icons */
+.hero-bg-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.float-item {
+  position: absolute;
+  font-size: 2rem;
+  color: var(--color-text);
+  opacity: 0.05;
+  animation: float 6s ease-in-out infinite;
+}
+
+[data-theme="dark"] .float-item {
+  color: var(--color-accent);
+  opacity: 0.15;
+  text-shadow: 0 0 10px var(--color-accent);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.hero .container { position: relative; z-index: 2; }
 
 .additional-links {
   display: flex;
@@ -430,7 +489,6 @@ section {
 }
 
 .skill-tag:hover {
-  /* Gradient border trick */
   background: var(--color-bg);
   border-color: transparent;
   background-image: linear-gradient(var(--color-bg), var(--color-bg)), var(--gradient-tech);
@@ -529,27 +587,25 @@ section {
   margin-bottom: 30px;
 }
 
-/* Card Styling - The "Active Node" Look */
+/* Card Styling */
 .portfolio-wrap {
   background: var(--color-bg);
   border-radius: var(--radius-card);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-border); /* Default border */
-  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy */
+  border: 1px solid var(--color-border);
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-/* Dark Mode Card Override */
 [data-theme="dark"] .portfolio-wrap {
   background-color: var(--color-bg-light);
   border-color: var(--color-border);
 }
 
-/* Hover Effect: Gradient Border & Glow */
 .portfolio-wrap:hover {
   transform: translateY(-10px) scale(1.02);
   box-shadow: var(--shadow-lg), var(--gradient-glow);
@@ -561,7 +617,7 @@ section {
 
 .portfolio-wrap img {
   width: 100%;
-  height: auto; /* Full image fix */
+  height: auto;
   display: block;
   transition: 0.4s;
   border-bottom: 1px solid var(--color-border);
@@ -586,14 +642,12 @@ section {
   margin-bottom: 0;
 }
 
-/* Link Button (Circle) */
 .portfolio-info .details-link,
 .portfolio-info .preview-link {
   position: absolute;
   right: 20px;
   bottom: 20px;
   top: auto;
-  
   width: 40px;
   height: 40px;
   background-color: rgba(11, 99, 239, 0.08);
@@ -607,7 +661,6 @@ section {
   z-index: 2;
 }
 
-/* Dark Mode Button Fix */
 [data-theme="dark"] .portfolio-info .details-link {
   background-color: rgba(255, 255, 255, 0.1);
   color: #fff;
@@ -695,7 +748,6 @@ section {
   color: var(--color-text);
 }
 
-/* Dark Mode Inputs */
 [data-theme="dark"] input, 
 [data-theme="dark"] textarea {
   background-color: var(--color-bg-light);
@@ -827,7 +879,7 @@ section {
 }
 
 /* --------------------------------------------------------------
-# Fix: Cards in Dark Mode (For generic cards like Data Model)
+# FIX: Cards in Dark Mode (Data Models / Highlights)
 -------------------------------------------------------------- */
 [data-theme="dark"] .card.bg-light {
   background-color: var(--color-bg-light) !important; 
@@ -836,7 +888,7 @@ section {
 
 [data-theme="dark"] .card-body h5,
 [data-theme="dark"] .card-body h6 {
-  color: #fff !important; /* White Titles in cards */
+  color: var(--color-accent) !important; /* Accent Color Title */
 }
 
 [data-theme="dark"] .card-body ul li,
@@ -921,6 +973,17 @@ section {
   flex-shrink: 0;
 }
 
+/* Fix for Sidebar Text (Tech Stack, etc.) */
+[data-theme="dark"] .portfolio-info .text-muted,
+[data-theme="dark"] .portfolio-info ul li,
+[data-theme="dark"] .portfolio-info p {
+    color: var(--color-text) !important; /* Forces light grey text */
+}
+[data-theme="dark"] .portfolio-info strong,
+[data-theme="dark"] .portfolio-info h3 {
+    color: var(--color-heading) !important; /* Forces white for bold text */
+}
+
 /* Project Description */
 .portfolio-description {
   padding-top: 20px;
@@ -956,79 +1019,10 @@ section {
   transform: translateY(-2px);
   box-shadow: var(--gradient-glow);
 }
-/* --------------------------------------------------------------
-# Genius Hero Enhancements
--------------------------------------------------------------- */
 
-/* 1. Animated Gradient Text for Name */
-.hero h1.gradient-text {
-  background: linear-gradient(300deg, var(--color-heading), var(--color-accent), #c315e5dc, var(--color-heading));
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-move 5s ease infinite;
-  font-weight: 800;
-  letter-spacing: -1px;
-}
-
-@keyframes gradient-move {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* 2. Typewriter Cursor */
-.typed-cursor {
-  color: var(--color-accent);
-  font-size: 30px;
-}
-
-/* 3. Floating Background Icons (Data Atmosphere) */
-.hero {
-  position: relative;
-  overflow: hidden; /* Keep icons inside */
-}
-
-.hero-bg-elements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* Allow clicking through them */
-  z-index: 1;
-}
-
-.float-item {
-  position: absolute;
-  font-size: 2rem;
-  color: var(--color-text);
-  opacity: 0.05; /* Very subtle in light mode */
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Make icons glow in Dark Mode */
-[data-theme="dark"] .float-item {
-  color: var(--color-accent);
-  opacity: 0.15;
-  text-shadow: 0 0 10px var(--color-accent);
-}
-
-@keyframes float {
-  0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(10deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
-}
-
-/* Ensure Hero content sits above the floating icons */
-.hero .container {
-  position: relative;
-  z-index: 2;
-}
 /* --------------------------------------------------------------
 # Mobile Navigation Fixes
 -------------------------------------------------------------- */
-
 @media (max-width: 1199px) {
   /* Adjust Header Container for Mobile */
   .header .container-fluid {
@@ -1090,10 +1084,15 @@ section {
   }
 }
 
-/* Add RGB variables for background opacity to work */
-:root {
-    --color-bg-rgb: 255, 255, 255; /* White */
-}
-[data-theme="dark"] {
-    --color-bg-rgb: 10, 17, 32; /* Dark Blue */
+/* Mobile Safety (Tables & Iframes) */
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  iframe {
+    max-width: 100%;
+    height: auto;
+    min-height: 400px;
+  }
 }
