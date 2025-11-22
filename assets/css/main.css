@@ -435,25 +435,58 @@ section {
 /* --------------------------------------------------------------
 # About Section
 -------------------------------------------------------------- */
+
 .about .image-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    /* 1. Make the border hug the content exactly */
+    display: inline-block; 
+    width: auto;
+    
+    /* 2. Prevent it from getting too big */
+    max-width: 350px; 
+    
+    /* 3. Center it */
+    margin: 0 auto 20px auto;
+    padding: 0; 
+    
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    
+    /* Transitions */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                box-shadow 0.4s ease, 
+                border-color 0.3s ease; 
+    
+    /* Base Border Style */
+    border: 2px solid var(--color-border); 
+    box-shadow: var(--shadow-md);
+    background: var(--color-bg);
+    line-height: 0; 
 }
 
 .about .image-wrapper img {
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-lg);
-  max-width: 80%;
-  object-fit: cover;
-  transition: 0.3s;
+  width: 100%; 
+  height: auto; 
+  display: block; 
+  border-radius: calc(var(--radius-card) - 2px);
 }
 
-/* Dark Mode Profile Fix */
-[data-theme="dark"] .about .image-wrapper img {
-  background-color: transparent;
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  box-shadow: 0 0 25px rgba(59, 130, 246, 0.2);
+/* --- HOVER STATE (LIGHT MODE) --- */
+.about .image-wrapper:hover {
+    transform: translateY(-5px);
+    /* GLOW EFFECT: We use the accent color instead of black */
+    box-shadow: 0 10px 30px var(--color-accent); 
+    border-color: var(--color-accent) !important; 
+}
+
+/* --- DARK MODE ADJUSTMENTS --- */
+[data-theme="dark"] .about .image-wrapper {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .about .image-wrapper:hover {
+    /* GLOW EFFECT (DARK MODE): slightly stronger/tighter glow */
+    box-shadow: 0 0 25px var(--color-accent); 
 }
 
 .about .content h3 {
