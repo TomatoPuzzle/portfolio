@@ -38,12 +38,13 @@
 
 
         <div class="theme-switch-wrapper">
-          <span class="theme-label">Light</span>
-          <label class="theme-switch" for="checkbox">
+          <label class="theme-switch" for="checkbox" title="Toggle Dark Mode">
             <input type="checkbox" id="checkbox" />
-            <div class="slider round"></div>
+            <div class="slider round">
+              <i class="bi bi-sun-fill sun-icon"></i>
+              <i class="bi bi-moon-fill moon-icon"></i>
+            </div>
           </label>
-          <span class="theme-label">Dark</span>
         </div>
 
 
@@ -141,22 +142,26 @@
               </div>
 
               <div class="row mt-4">
-                <div class="col-md-6">
-                  <div class="card h-100 border-0 bg-light">
+                <div class="col-12">
+                  <div class="card border-0 bg-light">
                     <div class="card-body">
                       <h5 class="card-title fw-bold text-primary">Data Model Architecture</h5>
                       <ul class="small mb-0">
-                        <li><strong>Central Fact Tables:</strong> Payments & Expenses for financial tracking.</li>
-                        <li><strong>Dimension Tables:</strong> Users (Demographics, Goals) and Calendar (Time
-                          Intelligence).</li>
-                        <li><strong>Slicer Tables:</strong> Dynamic filtering for Age, Weight, and Activity factors.
+                        <li><strong>Multi-Fact Architecture:</strong> Payments & Expenses tables connected via shared
+                          dimensions.</li>
+                        <li><strong>Dimensions:</strong> Calendar for temporal analysis and Users (with snowflaked
+                          attributes) for demographics.</li>
+                        <li><strong>Dynamic Parameters:</strong> Disconnected slider tables for Age, Weight, and
+                          Activity modeling.</li>
+                        <li><strong>Calculation Layer:</strong> Centralized `_measure` table for organizing DAX logic.
                         </li>
                       </ul>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6 mt-3 mt-md-0">
-                  <div class="card h-100 border-0 bg-light">
+
+                <div class="col-12 mt-3">
+                  <div class="card border-0 bg-light">
                     <div class="card-body">
                       <h5 class="card-title fw-bold text-primary">Dashboard Modules</h5>
                       <ul class="small mb-0">
