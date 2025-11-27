@@ -1,6 +1,4 @@
-/* --------------------------------------------------------------
-# COOL DATA VIBE Configuration
--------------------------------------------------------------- */
+
 :root {
   /* Typography */
   --font-default: "Inter", system-ui, -apple-system, sans-serif;
@@ -675,39 +673,57 @@ section {
   margin-bottom: 0;
 }
 
+/* --------------------------------------------------------------
+# ZOOM & PROJECT BUTTON ANIMATIONS
+-------------------------------------------------------------- */
+
+/* 1. Common Styles for BOTH buttons (Zoom & Details) */
 .portfolio-info .details-link,
 .portfolio-info .preview-link {
   position: absolute;
-  right: 20px;
   bottom: 20px;
-  top: auto;
+  right: 20px; /* Both sit in the bottom right corner */
+  
   width: 40px;
   height: 40px;
   background-color: rgba(11, 99, 239, 0.08);
   color: var(--color-accent);
   border-radius: 50%;
+  
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  transition: all 0.3s ease;
+  
   z-index: 2;
+  cursor: pointer;
+  
+  /* ANIMATION SETTINGS: Start hidden and slightly lower */
+  opacity: 0; 
+  transform: translateY(20px); 
+  transition: all 0.3s ease-in-out;
 }
 
-[data-theme="dark"] .portfolio-info .details-link {
+/* 2. Dark Mode Colors */
+[data-theme="dark"] .portfolio-info .details-link,
+[data-theme="dark"] .portfolio-info .preview-link {
   background-color: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
 
-.portfolio-info .details-link:hover {
+/* 3. Hovering the Button itself (Scale up) */
+.portfolio-info .details-link:hover,
+.portfolio-info .preview-link:hover {
   background: var(--gradient-tech);
   color: #fff;
-  transform: scale(1.1);
+  transform: translateY(0) scale(1.1) !important; /* Keep it visible but bigger */
 }
 
-.portfolio-info .preview-link {
-  right: 70px; 
-  display: none;
+/* 4. THE MAGIC: Show buttons when hovering the CARD */
+.portfolio-wrap:hover .details-link,
+.portfolio-wrap:hover .preview-link {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* --------------------------------------------------------------
@@ -901,231 +917,93 @@ section {
   line-height: 0;
 }
 
-.scroll-top:hover {
-  box-shadow: var(--gradient-glow);
-  transform: translateY(-3px);
-}
-
-.scroll-top.active {
-  visibility: visible;
-  opacity: 1;
-}
 
 /* --------------------------------------------------------------
-# FIX: Cards in Dark Mode (Data Models / Highlights)
+   # IMAGE MODAL / LIGHTBOX STYLES
 -------------------------------------------------------------- */
-[data-theme="dark"] .card.bg-light {
-  background-color: var(--color-bg-light) !important; 
-  border: 1px solid var(--color-border) !important;
+
+/* The Modal (background) */
+.image-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10000; /* Sit on top of everything (Navbar is ~997) */
+  padding-top: 60px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  backdrop-filter: blur(5px); /* Cool blur effect behind image */
 }
 
-[data-theme="dark"] .card-body h5,
-[data-theme="dark"] .card-body h6 {
-  color: var(--color-accent) !important; /* Accent Color Title */
+/* Modal Content (The Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 900px; /* Prevent it from getting too huge */
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
-[data-theme="dark"] .card-body ul li,
-[data-theme="dark"] .card-body p {
-  color: var(--color-text) !important;
+/* Caption of Modal */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 15px 0;
+  height: 150px;
+  font-size: 18px;
+  font-family: var(--font-default);
 }
 
-/* --------------------------------------------------------------
-# Project Details Page Specifics
--------------------------------------------------------------- */
-.page-title {
-  padding: 40px 0;
-  position: relative;
-  background: transparent;
-  margin-top: 60px;
+/* Add Animation - Zoom in effect */
+.modal-content, #caption {  
+  animation-name: zoom;
+  animation-duration: 0.6s;
 }
 
-.page-title h1 {
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--color-heading);
-  margin-bottom: 10px;
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
 }
 
-.breadcrumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
-  color: var(--color-text);
-}
-
-.breadcrumbs ol li + li {
-  padding-left: 10px;
-}
-
-.breadcrumbs ol li + li::before {
-  content: "/";
-  display: inline-block;
-  padding-right: 10px;
-  color: var(--color-text);
-  opacity: 0.5;
-}
-
-.breadcrumbs a {
-  color: var(--color-text);
-  font-weight: 500;
-}
-
-.breadcrumbs a:hover {
-  color: var(--color-accent);
-}
-
-/* Sidebar Info */
-.portfolio-info h3 {
-  font-size: 22px;
-  font-weight: 700;
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-  color: var(--color-heading);
-}
-
-.portfolio-info ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
-}
-
-.portfolio-info ul li {
-  display: flex;
-  padding: 10px 0;
-  align-items: center;
-}
-
-.portfolio-info ul li strong {
-  color: var(--color-heading);
-  width: 100px;
-  font-weight: 600;
-  flex-shrink: 0;
-}
-
-/* Fix for Sidebar Text (Tech Stack, etc.) */
-[data-theme="dark"] .portfolio-info .text-muted,
-[data-theme="dark"] .portfolio-info ul li,
-[data-theme="dark"] .portfolio-info p {
-    color: var(--color-text) !important; /* Forces light grey text */
-}
-[data-theme="dark"] .portfolio-info strong,
-[data-theme="dark"] .portfolio-info h3 {
-    color: var(--color-heading) !important; /* Forces white for bold text */
-}
-
-/* Project Description */
-.portfolio-description {
-  padding-top: 20px;
-}
-
-.portfolio-description h2 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: var(--color-heading);
-}
-
-.portfolio-description p {
-  color: var(--color-text);
-  margin-bottom: 20px;
-  line-height: 1.8;
-}
-
-.portfolio-info .btn-visit {
-  display: inline-block;
-  background: var(--gradient-tech);
-  color: #fff;
-  padding: 8px 25px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 600;
-  margin-top: 10px;
+/* The Close Button */
+.modal-close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
   transition: 0.3s;
-  box-shadow: var(--shadow-sm);
+  z-index: 10001;
+  cursor: pointer;
+  line-height: 1;
 }
 
-.portfolio-info .btn-visit:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--gradient-glow);
+.modal-close:hover,
+.modal-close:focus {
+  color: var(--color-accent); /* Uses your theme blue */
+  text-decoration: none;
+  cursor: pointer;
 }
 
-/* --------------------------------------------------------------
-# Mobile Navigation Fixes
--------------------------------------------------------------- */
-@media (max-width: 1199px) {
-  /* Adjust Header Container for Mobile */
-  .header .container-fluid {
-    padding-right: 15px;
-    padding-left: 15px;
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+  .modal-content {
+    width: 95%;
   }
-
-  /* Position the Theme Switch correctly on mobile */
-  .theme-switch-wrapper {
-    margin-left: auto; /* Push to the right */
-    margin-right: 15px; /* Space between switch and hamburger */
-  }
-
-  /* Ensure Hamburger is visible and clickable */
-  .mobile-nav-toggle {
-    display: block; /* Make sure it's visible */
-    font-size: 28px;
-    color: var(--color-heading);
-    cursor: pointer;
-    z-index: 9999; /* Ensure it's on top */
-  }
-
-  /* Mobile Navigation Overlay Styles */
-  .navmenu ul {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 9998; /* Behind the toggle button */
-    background-color: rgba(var(--color-bg-rgb), 0.95); /* Full screen overlay */
-    overflow-y: auto;
-    transition: 0.3s;
-    padding: 60px 20px 20px 20px; /* Space for top header */
-    flex-direction: column; /* Stack links vertically */
-    align-items: flex-start; /* Align left */
-    margin: 0;
-    border-left: 1px solid var(--color-border);
-  }
-  
-  /* When Mobile Nav is Active */
-  body.mobile-nav-active .navmenu ul {
-    display: flex; /* Show the menu */
-  }
-
-  /* Styling links in mobile menu */
-  .navmenu a {
-    display: block;
-    padding: 15px 0;
-    font-size: 18px;
-    width: 100%;
-    color: var(--color-heading);
-  }
-  
-  .navmenu a:hover, .navmenu a.active {
-      color: var(--color-accent);
-      background: transparent;
-  }
-}
-
-/* Mobile Safety (Tables & Iframes) */
-@media (max-width: 768px) {
-  .table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  iframe {
-    max-width: 100%;
-    height: auto;
-    min-height: 400px;
+  .modal-close {
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
   }
 }

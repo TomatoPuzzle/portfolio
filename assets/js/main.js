@@ -1,34 +1,22 @@
-/**
- * Main JS File - Fixed for Mobile & Dark Mode
- */
 ;(function () {
   "use strict"
 
   /**
-   * ---------------------------------------------------------
-   * 1. DARK MODE LOGIC (Slider Version)
-   * ---------------------------------------------------------
+   * 1. DARK MODE LOGIC
    */
   function initDarkMode() {
     const toggleCheckbox = document.querySelector("#checkbox")
     const html = document.documentElement
-
-    // A. Check Local Storage or System Preference
     const savedTheme = localStorage.getItem("theme")
     const systemPref = window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light"
     const currentTheme = savedTheme || systemPref
 
-    // B. Apply Theme immediately
     html.setAttribute("data-theme", currentTheme)
 
-    // C. Sync the slider position
     if (toggleCheckbox) {
-      // Set checkbox state based on theme
       toggleCheckbox.checked = currentTheme === "dark"
-
-      // D. Event Listener for Slider Change
       toggleCheckbox.addEventListener("change", function (e) {
         if (e.target.checked) {
           html.setAttribute("data-theme", "dark")
@@ -40,13 +28,10 @@
       })
     }
   }
-  // Run immediately so theme applies before page finishes loading
   initDarkMode()
 
   /**
-   * ---------------------------------------------------------
-   * 2. MOBILE NAVIGATION (The Fix)
-   * ---------------------------------------------------------
+   * 2. MOBILE NAVIGATION
    */
   const mobileNavToggleBtn = document.querySelector(".mobile-nav-toggle")
 
@@ -60,7 +45,6 @@
     mobileNavToggleBtn.addEventListener("click", mobileNavToogle)
   }
 
-  // Close mobile nav when a link is clicked
   document.querySelectorAll("#navmenu a").forEach((navmenu) => {
     navmenu.addEventListener("click", () => {
       if (document.querySelector(".mobile-nav-active")) {
@@ -69,7 +53,6 @@
     })
   })
 
-  // Toggle mobile nav dropdowns (if any)
   document.querySelectorAll(".navmenu .toggle-dropdown").forEach((navmenu) => {
     navmenu.addEventListener("click", function (e) {
       e.preventDefault()
@@ -80,9 +63,7 @@
   })
 
   /**
-   * ---------------------------------------------------------
    * 3. PRELOADER
-   * ---------------------------------------------------------
    */
   const preloader = document.querySelector("#preloader")
   if (preloader) {
@@ -92,9 +73,7 @@
   }
 
   /**
-   * ---------------------------------------------------------
    * 4. SCROLL EFFECTS
-   * ---------------------------------------------------------
    */
   function toggleScrolled() {
     const selectBody = document.querySelector("body")
@@ -113,7 +92,6 @@
   document.addEventListener("scroll", toggleScrolled)
   window.addEventListener("load", toggleScrolled)
 
-  // Scroll Top Button
   let scrollTop = document.querySelector(".scroll-top")
   function toggleScrollTop() {
     if (scrollTop) {
@@ -125,22 +103,15 @@
   if (scrollTop) {
     scrollTop.addEventListener("click", (e) => {
       e.preventDefault()
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      })
+      window.scrollTo({ top: 0, behavior: "smooth" })
     })
   }
   window.addEventListener("load", toggleScrollTop)
   document.addEventListener("scroll", toggleScrollTop)
 
   /**
-   * ---------------------------------------------------------
-   * 5. VENDOR LIBRARIES INIT
-   * ---------------------------------------------------------
+   * 5. VENDOR LIBRARIES
    */
-
-  // AOS Animation
   function aosInit() {
     if (typeof AOS !== "undefined") {
       AOS.init({
@@ -153,7 +124,6 @@
   }
   window.addEventListener("load", aosInit)
 
-  // Typed.js (Typewriter effect)
   const selectTyped = document.querySelector(".typed")
   if (selectTyped && typeof Typed !== "undefined") {
     let typed_strings = selectTyped.getAttribute("data-typed-items")
@@ -167,24 +137,18 @@
     })
   }
 
-  // Pure Counter
   if (typeof PureCounter !== "undefined") {
     new PureCounter()
   }
 
-  // GLightbox
   if (typeof GLightbox !== "undefined") {
-    const glightbox = GLightbox({
-      selector: ".glightbox",
-    })
+    const glightbox = GLightbox({ selector: ".glightbox" })
   }
 
-  // Isotope Layout (Portfolio Filter)
   document.querySelectorAll(".isotope-layout").forEach(function (isotopeItem) {
     let layout = isotopeItem.getAttribute("data-layout") ?? "masonry"
     let filter = isotopeItem.getAttribute("data-default-filter") ?? "*"
     let sort = isotopeItem.getAttribute("data-sort") ?? "original-order"
-
     let initIsotope
     if (typeof imagesLoaded !== "undefined" && typeof Isotope !== "undefined") {
       imagesLoaded(
@@ -202,7 +166,6 @@
         }
       )
     }
-
     isotopeItem
       .querySelectorAll(".isotope-filters li")
       .forEach(function (filters) {
@@ -214,9 +177,7 @@
               .classList.remove("filter-active")
             this.classList.add("filter-active")
             if (initIsotope) {
-              initIsotope.arrange({
-                filter: this.getAttribute("data-filter"),
-              })
+              initIsotope.arrange({ filter: this.getAttribute("data-filter") })
             }
             aosInit()
           },
@@ -225,7 +186,6 @@
       })
   })
 
-  // Swiper Slider
   function initSwiper() {
     document.querySelectorAll(".init-swiper").forEach(function (swiperElement) {
       let config = JSON.parse(
@@ -238,7 +198,6 @@
   }
   window.addEventListener("load", initSwiper)
 
-  // Navmenu Scrollspy
   let navmenulinks = document.querySelectorAll(".navmenu a")
   function navmenuScrollspy() {
     navmenulinks.forEach((navmenulink) => {
@@ -261,4 +220,59 @@
   }
   window.addEventListener("load", navmenuScrollspy)
   document.addEventListener("scroll", navmenuScrollspy)
+
+  /**
+   *
+   * 6. IMAGE MODAL / LIGHTBOX
+   *
+   */
+  function initModalLogic() {
+    // 1. Find the modal in the document
+    const modal = document.getElementById("myImageModal")
+
+    // If modal is missing, stop here to prevent errors
+    if (!modal) {
+      console.warn("Modal HTML not found! Did you paste the HTML snippet?")
+      return
+    }
+
+    const modalImg = document.getElementById("img01")
+    const captionText = document.getElementById("caption")
+    const closeBtn = document.querySelector(".modal-close")
+    const links = document.querySelectorAll(".preview-link")
+
+    // 2. Add click listeners to buttons
+    links.forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault() // Stop link from navigating
+
+        console.log("Zoom button clicked") // Debug message in console
+
+        modal.style.display = "block" // Show the window
+        modalImg.src = this.getAttribute("href") // Get image URL
+        captionText.innerHTML = this.getAttribute("title") // Get Title
+      })
+    })
+
+    // 3. Close Logic
+    if (closeBtn) {
+      closeBtn.onclick = function () {
+        modal.style.display = "none"
+      }
+    }
+
+    modal.onclick = function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none"
+      }
+    }
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        modal.style.display = "none"
+      }
+    })
+  }
+
+  window.addEventListener("load", initModalLogic)
 })()
