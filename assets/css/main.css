@@ -1,4 +1,6 @@
-
+/* --------------------------------------------------------------
+# COOL DATA VIBE Configuration
+-------------------------------------------------------------- */
 :root {
   /* Typography */
   --font-default: "Inter", system-ui, -apple-system, sans-serif;
@@ -582,6 +584,7 @@ section {
 -------------------------------------------------------------- */
 .bg-light {
   background-color: var(--color-bg-light) !important;
+  color: var(--color-text) !important; /* <--- FIX ADDED HERE */
 }
 
 .portfolio-filters {
