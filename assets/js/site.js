@@ -109,13 +109,31 @@
     });
   }
 
-  /* Card spotlight */
+  /* Card spotlight + 3D tilt */
   if (!reduced && window.matchMedia("(hover: hover)").matches) {
-    document.querySelectorAll(".card").forEach(function (card) {
-      card.addEventListener("pointermove", function (e) {
-        var r = card.getBoundingClientRect();
-        card.style.setProperty("--mx", (e.clientX - r.left) + "px");
-        card.style.setProperty("--my", (e.clientY - r.top) + "px");
+    var tiltEls = document.querySelectorAll(".card, .hero-panel");
+    tiltEls.forEach(function (el) {
+      var max = el.classList.contains("hero-panel") ? 7 : 5; // degrees
+
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        var x = e.clientX - r.left;
+        var y = e.clientY - r.top;
+
+        // spotlight position (glare)
+        el.style.setProperty("--mx", x + "px");
+        el.style.setProperty("--my", y + "px");
+
+        // tilt toward the cursor
+        var rx = ((y / r.height) - 0.5) * -2 * max;
+        var ry = ((x / r.width) - 0.5) * 2 * max;
+        el.style.transform =
+          "perspective(900px) rotateX(" + rx.toFixed(2) + "deg) rotateY(" +
+          ry.toFixed(2) + "deg) translateY(-4px) scale(1.01)";
+      });
+
+      el.addEventListener("pointerleave", function () {
+        el.style.transform = "";
       });
     });
   }

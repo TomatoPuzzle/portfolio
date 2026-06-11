@@ -312,7 +312,8 @@ section { padding: 100px 0; }
   will-change: transform;
 }
 
-.hero-panel:hover { transform: translateY(-4px) rotate(-0.5deg); }
+/* hover transform handled by JS 3D tilt */
+.hero-panel { transform-style: preserve-3d; }
 
 .hero-panel .panel-head {
   display: flex;
@@ -596,8 +597,12 @@ section { padding: 100px 0; }
 
 .card:hover::after { opacity: 1; }
 
+.card {
+  transform-style: preserve-3d;
+  transition: transform 0.18s ease-out, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
 .card:hover {
-  transform: translateY(-5px);
   box-shadow: var(--shadow-lift);
   border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
 }
