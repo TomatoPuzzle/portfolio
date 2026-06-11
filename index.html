@@ -13,597 +13,593 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
 
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/css/home.css" rel="stylesheet">
 
-  <link href="assets/css/main.css" rel="stylesheet">
+  <!-- Set theme before paint to avoid flash. Same localStorage key as the project pages. -->
+  <script>
+    (function () {
+      var t = localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
 </head>
 
-<body class="index-page">
+<body>
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="logo">Miraj<span>.</span></a>
 
-      <a href="index.html" class="logo d-flex align-items-center">
-        <h1 class="sitename">Miraj.</h1>
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-
-        <div class="theme-switch-wrapper">
-          <label class="theme-switch" for="checkbox" title="Toggle Dark Mode">
-            <input type="checkbox" id="checkbox" />
-            <div class="slider round">
-              <i class="bi bi-sun-fill sun-icon"></i>
-              <i class="bi bi-moon-fill moon-icon"></i>
-            </div>
-          </label>
-        </div>
-
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#resume">Resume</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#portfolio">Projects</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+          <span class="icon-moon">&#9789;</span>
+          <span class="icon-sun">&#9728;</span>
+        </button>
       </nav>
-
     </div>
   </header>
 
-  <main class="main">
+  <main>
 
-    <section id="hero" class="hero section">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="wrap">
 
-      <div class="hero-bg-elements">
-        <i class="bi bi-code-slash float-item" style="top: 15%; left: 10%; animation-delay: 0s;"></i>
-        <i class="bi bi-database float-item" style="top: 20%; right: 15%; animation-delay: 1s;"></i>
-        <i class="bi bi-graph-up-arrow float-item" style="top: 70%; left: 15%; animation-delay: 2s;"></i>
-        <i class="bi bi-pie-chart float-item" style="top: 65%; right: 10%; animation-delay: 3s;"></i>
-        <i class="bi bi-cpu float-item" style="top: 40%; left: 80%; animation-delay: 4s;"></i>
-      </div>
+        <div class="hero-copy">
+          <p class="data-label">data analyst &middot; torino, italy</p>
 
-      <div class="container d-flex flex-column align-items-center justify-content-center text-center" data-aos="fade-up"
-        data-aos-delay="100">
-        <div class="hero-content">
+          <h1>Miraj Ahmed<span class="dot">.</span></h1>
 
-          <p class="pre-title">Hello, I'm</p>
+          <p class="role">I am a <span class="typed" id="typed"
+              data-typed-items="Data Analyst,BI Engineer,Storyteller with Data"></span><span
+              class="cursor">&nbsp;</span></p>
 
-          <h1 class="gradient-text">Miraj Ahmed</h1>
-
-          <h2>I am a <span class="typed"
-              data-typed-items="Data Analyst, BI Engineer, Storyteller with Data"></span><span
-              class="typed-cursor typed-cursor--blink" aria-hidden="true">|</span></h2>
-
-          <div class="additional-links mt-4">
-            <a href="https://www.linkedin.com/in/mirajsym/" target='_blank' class="btn-custom"><i
-                class="bi bi-linkedin me-2"></i> LinkedIn</a>
-            <a href="https://github.com/mirajSYM02" target="_blank" class="btn-custom"><i class="bi bi-github me-2"></i>
-              GitHub</a>
-            <a href="https://twitter.com/symanto_" target="_blank" class="btn-custom"><i
-                class="bi bi-twitter-x me-2"></i> Twitter</a>
+          <div class="hero-links">
+            <a href="https://www.linkedin.com/in/mirajsym/" target="_blank" rel="noopener" class="chip">
+              <svg viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://github.com/mirajSYM02" target="_blank" rel="noopener" class="chip">
+              <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
+              GitHub
+            </a>
+            <a href="https://twitter.com/symanto_" target="_blank" rel="noopener" class="chip">
+              <svg viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg>
+              Twitter
+            </a>
           </div>
 
+          <div class="kpis">
+            <div class="kpi">
+              <div class="num"><span data-count="16">0</span><em>+</em></div>
+              <div class="lbl">projects shipped</div>
+            </div>
+            <div class="kpi">
+              <div class="num"><span data-count="6">0</span><em>+</em></div>
+              <div class="lbl">certifications</div>
+            </div>
+            <div class="kpi">
+              <div class="num"><span data-count="7">0</span><em>+</em></div>
+              <div class="lbl">tools mastered</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pure-CSS mini dashboard: the signature element -->
+        <div class="hero-panel" aria-hidden="true">
+          <div class="panel-head">
+            <span class="panel-title">insights.pbix &mdash; live</span>
+            <span class="dots"><i></i><i></i><i></i></span>
+          </div>
+
+          <div class="bars">
+            <i style="--h:38%"></i>
+            <i style="--h:56%"></i>
+            <i style="--h:44%"></i>
+            <i style="--h:70%"></i>
+            <i style="--h:52%"></i>
+            <i style="--h:84%"></i>
+            <i style="--h:66%"></i>
+            <i style="--h:96%"></i>
+          </div>
+
+          <div class="panel-spark">
+            <svg viewBox="0 0 300 40">
+              <path d="M2 33 L40 28 L75 31 L110 21 L145 25 L180 14 L215 19 L250 9 L296 4" />
+              <circle cx="296" cy="4" r="3.5" />
+            </svg>
+            <span class="delta">&#9650; insight rate</span>
+          </div>
+
+          <div class="panel-legend">
+            <span>python</span>
+            <span>sql</span>
+            <span>dax</span>
+            <span>ml</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ SKILLS MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Python</span><span>SQL</span><span>Power BI</span><span>Tableau</span><span>Excel</span><span>Microsoft Azure</span><span>Microsoft Fabric</span><span>Scikit-Learn</span><span>Pandas</span><span>DAX</span>
+        <span>Python</span><span>SQL</span><span>Power BI</span><span>Tableau</span><span>Excel</span><span>Microsoft Azure</span><span>Microsoft Fabric</span><span>Scikit-Learn</span><span>Pandas</span><span>DAX</span>
+      </div>
+    </div>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <p class="data-label">about &mdash; 1 row</p>
+          <h2>About Me</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-photo reveal">
+            <img src="img/profile-img.webp" alt="Portrait of Miraj Ahmed">
+          </div>
+
+          <div class="about-text reveal" data-delay="1">
+            <p>
+              I'm <b>Miraj</b>, a <b>dedicated Data Analyst and BI Engineer</b> passionate about turning complex
+              data into actionable insights. I am currently pursuing a <b>Master's in Computer Engineering</b>
+              specializing in <b>Artificial Intelligence and Data Analytics</b> at <b>Politecnico di Torino</b>.
+              I also hold a <b>Bachelor's in Computer Science</b> from the University of Technology Malaysia.
+            </p>
+
+            <div class="skills">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">Power BI</span>
+              <span class="skill-tag">Excel</span>
+              <span class="skill-tag">Tableau</span>
+              <span class="skill-tag">Microsoft Azure</span>
+              <span class="skill-tag">Microsoft Fabric</span>
+            </div>
+
+            <p>
+              My academic journey and study abroad experiences have strengthened my adaptability. Notably, I earned an
+              <b>A+</b> for my final year project, the <b>"Save Me Accident Alert System."</b>
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="about section">
-      <div class="container" data-aos="fade-up">
-        <div class="row align-items-center gy-5">
-          <div class="col-lg-4 d-flex justify-content-center">
-            <div class="image-wrapper">
-              <img src="img/profile-img.webp" class="img-fluid" alt="Profile Image">
-            </div>
-          </div>
-
-          <div class="col-lg-8 content">
-            <div class="text-container">
-              <h3>About Me</h3>
-              <p class="intro">
-                I'm <b>Miraj</b>, a <b>dedicated Data Analyst and BI Engineer</b> passionate about turning complex
-                data into actionable insights. I am currently pursuing a <b>Master's in Computer Engineering</b>
-                specializing in <b>Artificial Intelligence and Data Analytics</b> at <b>Politecnico di Torino</b>.
-                I also hold a <b>Bachelor's in Computer Science</b> from the University of Technology Malaysia.
-              </p>
-
-              <div class="skills-grid">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">Power BI</span>
-                <span class="skill-tag">Excel</span>
-                <span class="skill-tag">Tableau</span>
-                <span class="skill-tag">Microsoft Azure</span>
-                <span class="skill-tag">Microsoft Fabric</span>
-              </div>
-
-              <p class="mt-4">
-                My academic journey and study abroad experiences have strengthened my adaptability. Notably, I earned an
-                <b>A+</b> for my final year project, the <b>"Save Me Accident Alert System."</b>
-              </p>
-            </div>
-          </div>
+    <!-- ============ RESUME ============ -->
+    <section id="resume">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <p class="data-label">resume &mdash; 5 entries</p>
+          <h2>Resume</h2>
+          <p>My academic journey and professional milestones.</p>
         </div>
-      </div>
-    </section>
 
+        <div class="resume-grid">
 
-
-    <section id="resume" class="resume section">
-
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Resume</h2>
-        <p>My academic journey and professional milestones.</p>
-      </div>
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Education</h3>
+          <div class="resume-col reveal">
+            <h3>Education</h3>
 
             <div class="resume-item">
               <h4>Master of Science in Computer Engineering</h4>
-              <h5>Present</h5>
-              <p><em>Politecnico di Torino, Italy</em></p>
-              <p>Specialization: <strong>Artificial Intelligence & Data Analytics</strong></p>
+              <span class="when">Present</span>
+              <span class="where">Politecnico di Torino, Italy</span>
+              <p>Specialization: <strong>Artificial Intelligence &amp; Data Analytics</strong></p>
             </div>
 
             <div class="resume-item">
               <h4>Bachelor of Computer Science (Software Engineering)</h4>
-              <h5>2017 - 2021</h5>
-              <p><em>Universiti Teknologi Malaysia</em></p>
-              <p>Dean's List Recipient. Obtained <strong>A+</strong> in Final Year Project.<br> GPA: <strong>3.57,
-                  3.61, 4.00, 3.62</strong> (Final 4 Semesters).</p>
+              <span class="when">2017 &ndash; 2021</span>
+              <span class="where">Universiti Teknologi Malaysia</span>
+              <p>Dean's List Recipient. Obtained <strong>A+</strong> in Final Year Project.<br>
+                GPA: <strong>3.57, 3.61, 4.00, 3.62</strong> (Final 4 Semesters).</p>
             </div>
 
             <div class="resume-item">
               <h4>Higher Secondary Certificate (HSC)</h4>
-              <h5>2013 - 2014</h5>
-              <p><em>Govt. Science College, Dhaka</em></p>
+              <span class="when">2013 &ndash; 2014</span>
+              <span class="where">Govt. Science College, Dhaka</span>
               <p>Graduated with A+ in all science subjects.</p>
             </div>
           </div>
 
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="resume-title">Professional Experience</h3>
+          <div class="resume-col reveal" data-delay="1">
+            <h3>Professional Experience</h3>
 
             <div class="resume-item">
               <h4>Operations Support (Supply Chain Analysis)</h4>
-              <h5>Nov 2023 - Dec 2024</h5>
-              <p><em>Raihan Enterprise, Bangladesh</em></p>
+              <span class="when">Nov 2023 &ndash; Dec 2024</span>
+              <span class="where">Raihan Enterprise, Bangladesh</span>
               <ul>
                 <li>Assisted in managing inventory and delivery distribution of mineral water and salt.</li>
                 <li>Helped supervisor with vendor communications and logistics coordination.</li>
                 <li>Maintained records of sales, stock, and shipments to support smooth daily operations.</li>
               </ul>
-
-              <p class="mt-2">
-                <a href="img/portfolio/exp.webp"
-                  class="preview-link d-inline-flex align-items-center gap-2 text-decoration-none"
-                  style="font-size: 0.9rem; font-weight: 600;" title="Raihan Enterprise Experience Certificate">
-                  <i class="bi bi-file-earmark-check-fill text-primary"></i> View NOC
-                </a>
-              </p>
+              <a href="img/portfolio/exp.webp" class="doc-link preview-link"
+                title="Raihan Enterprise Experience Certificate">&#128196; View NOC</a>
             </div>
+
             <div class="resume-item">
               <h4>Data Analyst (Intern)</h4>
-              <h5>Oct 2020 - Feb 2021</h5>
-              <p><em>UTM Big Data Centre</em></p>
+              <span class="when">Oct 2020 &ndash; Feb 2021</span>
+              <span class="where">UTM Big Data Centre</span>
               <ul>
                 <li>Collaborated to research "The impact of education on employment in Malaysia".</li>
                 <li>Cleaned and preprocessed complex datasets ensuring high accuracy.</li>
                 <li>Built interactive visual reports and derived trends using <strong>Power BI</strong>.</li>
                 <li>Authored a comprehensive report summarizing findings for stakeholders.</li>
               </ul>
-              <p class="mt-2">
-                <a href="img/portfolio/internship_certificate.webp"
-                  class="preview-link d-inline-flex align-items-center gap-2 text-decoration-none"
-                  style="font-size: 0.9rem; font-weight: 600;" title="Internship Certificate">
-                  <i class="bi bi-file-earmark-check-fill text-primary"></i> View Certificate
-                </a>
-              </p>
-            </div>
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-      </div>
-
-    </section>
-
-
-
-    <section id="certifications" class="portfolio section bg-light">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Certifications</h2>
-        <p>Verified credentials and technical achievements.</p>
-      </div>
-
-      <div class="container">
-        <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
-            <div class="portfolio-wrap">
-              <img src="img/portfolio/datacamp.webp" class="img-fluid" alt="DataCamp">
-              <div class="portfolio-info">
-                <h4>Data Scientist</h4>
-                <p>DataCamp Certified</p>
-                <a href="img/portfolio/datacamp.webp" title="DataCamp Certificate" class="preview-link"><i
-                    class="bi bi-zoom-in"></i></a>
-              </div>
+              <a href="img/portfolio/internship_certificate.webp" class="doc-link preview-link"
+                title="Internship Certificate">&#128196; View Certificate</a>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
-            <div class="portfolio-wrap">
-              <img src="img/portfolio/AI-102.webp" class="img-fluid" alt="AI-102">
-              <div class="portfolio-info">
-                <h4>Azure AI Engineer (AI-102)</h4>
-                <p>Microsoft Certified</p>
-                <a href="img/portfolio/AI-102.webp" title="AI-102" class="preview-link"><i
-                    class="bi bi-zoom-in"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
-            <div class="portfolio-wrap">
-              <img src="img/portfolio/DP-100.webp" class="img-fluid" alt="DP-100">
-              <div class="portfolio-info">
-                <h4>Azure Data Scientist (DP-100)</h4>
-                <p>Microsoft Certified</p>
-                <a href="img/portfolio/DP-100.webp" title="DP-100" class="preview-link"><i
-                    class="bi bi-zoom-in"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
-            <div class="portfolio-wrap">
-              <img src="img/portfolio/PL-300.webp" class="img-fluid" alt="PL-300">
-              <div class="portfolio-info">
-                <h4>Power BI Analyst (PL-300)</h4>
-                <p>Microsoft Certified</p>
-                <a href="img/portfolio/PL-300.webp" title="PL-300" class="preview-link"><i
-                    class="bi bi-zoom-in"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
-            <div class="portfolio-wrap">
-              <img src="img/portfolio/DP-700.webp" class="img-fluid" alt="DP-700">
-              <div class="portfolio-info">
-                <h4>Fabric Data Engineer (DP-700)</h4>
-                <p>Microsoft Certified</p>
-                <a href="img/portfolio/DP-700.webp" title="DP-700" class="preview-link"><i
-                    class="bi bi-zoom-in"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item isotope-item">
-            <div class="portfolio-wrap">
-              <img src="img/portfolio/DP-600.webp" class="img-fluid" alt="DP-600">
-              <div class="portfolio-info">
-                <h4>Fabric Analytics (DP-600)</h4>
-                <p>Microsoft Certified</p>
-                <a href="img/portfolio/DP-600.webp" title="DP-600" class="preview-link"><i
-                    class="bi bi-zoom-in"></i></a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
-    <section id="portfolio" class="portfolio section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Projects</h2>
-        <p>Selected works in Data Science, Analysis & Machine Learning.</p>
-      </div>
+    <!-- ============ CERTIFICATIONS ============ -->
+    <section id="certifications">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <p class="data-label">certifications &mdash; 6 verified</p>
+          <h2>Certifications</h2>
+          <p>Verified credentials and technical achievements.</p>
+        </div>
 
-      <div class="container">
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+        <div class="card-grid">
 
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-academic">Academic</li>
-            <li data-filter=".filter-python">AI/ML</li>
-            <li data-filter=".filter-tableau">Tableau</li>
-            <li data-filter=".filter-powerbi">PowerBI</li>
-          </ul>
-
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-academic">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/fyp_cover.webp" class="img-fluid" alt="FYP">
-                <div class="portfolio-info">
-                  <h4>Accident Notification System</h4>
-                  <p>Final Year Project (Academic)</p>
-                  <a href="fyp.html" target="_blank" class="details-link" title="View Case Study"><i
-                      class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
+          <div class="card reveal">
+            <a href="img/portfolio/datacamp.webp" class="card-link preview-link" title="DataCamp Certificate"
+              aria-label="View DataCamp certificate"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/datacamp.webp" alt="DataCamp Data Scientist certificate" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">DataCamp Certified</span>
+              <h4>Data Scientist</h4>
             </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-powerbi">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/internship_cover.webp" class="img-fluid" alt="Internship">
-                <div class="portfolio-info">
-                  <h4>Education Impact Analysis</h4>
-                  <p>Internship Project</p>
-                  <a href="internship.html" target="_blank" class="details-link"><i
-                      class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-python">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/vit_project.webp" class="img-fluid" alt="ViT">
-                <div class="portfolio-info">
-                  <h4>Vision Transformer (ViT)</h4>
-                  <p>Image Classification from scratch</p>
-                  <a href="https://colab.research.google.com/drive/1LJVhKhEURppX0q6lu1ScFajFdnImXv4M?usp=sharing"
-                    target="_blank" class="details-link"><i class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-python">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/recipe_site.webp" class="img-fluid" alt="Recipe">
-                <div class="portfolio-info">
-                  <h4>Recipe Engagement Prediction</h4>
-                  <p>Machine Learning Model</p>
-                  <a href="https://www.datacamp.com/datalab/w/d299df23-ccb3-4604-b282-6e2dfb450924/edit" target="_blank"
-                    class="details-link"><i class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-python">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/bcg_project.webp" class="img-fluid" alt="BCG">
-                <div class="portfolio-info">
-                  <h4>Customer Churn Prediction</h4>
-                  <p>Random Forest (90% Accuracy)</p>
-                  <a href="bcg_customer_churn.html" target="_blank" class="details-link"><i
-                      class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-python">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/ab_testing_cover.webp" class="img-fluid" alt="AB Test">
-                <div class="portfolio-info">
-                  <h4>AB Testing</h4>
-                  <p>Website Theme Engagement</p>
-                  <a href="ab_testing.html" target="_blank" class="details-link"><i
-                      class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-tableau">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/datacamp_cover.webp" class="img-fluid" alt="DataCamp Case">
-                <div class="portfolio-info">
-                  <h4>Churn Analysis</h4>
-                  <p>DataCamp Case Study</p>
-                  <a href="datacamp.html" target="_blank" class="details-link"><i class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-powerbi">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/weather_dashboard_cover.webp" class="img-fluid" alt="Weather">
-                <div class="portfolio-info">
-                  <h4>Weather Dashboard</h4>
-                  <p>Real-Time Power BI</p>
-                  <a href="weather_dashboard.html" target="_blank" class="details-link"><i
-                      class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-powerbi">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/fitness_dashboard.webp" class="img-fluid" alt="Fitness">
-                <div class="portfolio-info">
-                  <h4>Fitness Analytics</h4>
-                  <p>Dashboard & Calculator</p>
-                  <a href="fitness_dashboard.html" target="_blank" class="details-link"><i
-                      class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-tableau">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/kpmg_cover.webp" class="img-fluid" alt="KPMG">
-                <div class="portfolio-info">
-                  <h4>Demographic Analysis</h4>
-                  <p>KPMG Virtual Internship</p>
-                  <a href="kpmg.html" target="_blank" class="details-link"><i class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-python">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/british_airways_cover.webp" class="img-fluid" alt="BA">
-                <div class="portfolio-info">
-                  <h4>Buying Behavior Prediction</h4>
-                  <p>British Airways Internship</p>
-                  <a href="british_airways.html" target="_blank" class="details-link"><i
-                      class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-tableau">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/jpmorgan_cover.webp" class="img-fluid" alt="JPMorgan">
-                <div class="portfolio-info">
-                  <h4>Sales & Demographic</h4>
-                  <p>JPMorgan Chase Internship</p>
-                  <a href="jpmorgan.html" target="_blank" class="details-link"><i class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-powerbi">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/app_cover.webp" class="img-fluid" alt="Fitness App">
-                <div class="portfolio-info">
-                  <h4>Fitness Tracker App</h4>
-                  <p>Power BI Dashboard</p>
-                  <a href="fitness_tracker.html" target="_blank" class="details-link"><i
-                      class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-python">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/google_cover.webp" class="img-fluid" alt="Google">
-                <div class="portfolio-info">
-                  <h4>Employee Attrition</h4>
-                  <p>Google Capstone Project</p>
-                  <a href="attrition.html" target="_blank" class="details-link"><i class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-tableau">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/accenture_cover.webp" class="img-fluid" alt="Accenture">
-                <div class="portfolio-info">
-                  <h4>User Engagement</h4>
-                  <p>Accenture Internship</p>
-                  <a href="accenture.html" target="_blank" class="details-link"><i class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-python">
-              <div class="portfolio-wrap">
-                <img src="img/portfolio/imdb__cover.webp" class="img-fluid" alt="IMDB">
-                <div class="portfolio-info">
-                  <h4>IMDB EDA</h4>
-                  <p>Exploratory Data Analysis</p>
-                  <a href="imdb.html" target="_blank" class="details-link"><i class="bi bi-arrow-up-right"></i></a>
-                </div>
-              </div>
-            </div>
-
           </div>
+
+          <div class="card reveal" data-delay="1">
+            <a href="img/portfolio/AI-102.webp" class="card-link preview-link" title="AI-102"
+              aria-label="View AI-102 certificate"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/AI-102.webp" alt="Azure AI Engineer AI-102 certificate" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">Microsoft Certified</span>
+              <h4>Azure AI Engineer (AI-102)</h4>
+            </div>
+          </div>
+
+          <div class="card reveal" data-delay="2">
+            <a href="img/portfolio/DP-100.webp" class="card-link preview-link" title="DP-100"
+              aria-label="View DP-100 certificate"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/DP-100.webp" alt="Azure Data Scientist DP-100 certificate" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">Microsoft Certified</span>
+              <h4>Azure Data Scientist (DP-100)</h4>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <a href="img/portfolio/PL-300.webp" class="card-link preview-link" title="PL-300"
+              aria-label="View PL-300 certificate"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/PL-300.webp" alt="Power BI Analyst PL-300 certificate" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">Microsoft Certified</span>
+              <h4>Power BI Analyst (PL-300)</h4>
+            </div>
+          </div>
+
+          <div class="card reveal" data-delay="1">
+            <a href="img/portfolio/DP-700.webp" class="card-link preview-link" title="DP-700"
+              aria-label="View DP-700 certificate"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/DP-700.webp" alt="Fabric Data Engineer DP-700 certificate" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">Microsoft Certified</span>
+              <h4>Fabric Data Engineer (DP-700)</h4>
+            </div>
+          </div>
+
+          <div class="card reveal" data-delay="2">
+            <a href="img/portfolio/DP-600.webp" class="card-link preview-link" title="DP-600"
+              aria-label="View DP-600 certificate"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/DP-600.webp" alt="Fabric Analytics DP-600 certificate" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">Microsoft Certified</span>
+              <h4>Fabric Analytics (DP-600)</h4>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <section id="contact" class="contact section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Let's discuss your data needs.</p>
-      </div>
+    <!-- ============ PROJECTS ============ -->
+    <section id="portfolio">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <p class="data-label">projects &mdash; 16 rows</p>
+          <h2>Projects</h2>
+          <p>Selected works in Data Science, Analysis &amp; Machine Learning.</p>
+        </div>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4 justify-content-center">
+        <div class="filters reveal" id="filters" role="group" aria-label="Filter projects">
+          <button class="active" data-filter="all">All</button>
+          <button data-filter="academic">Academic</button>
+          <button data-filter="python">AI/ML</button>
+          <button data-filter="tableau">Tableau</button>
+          <button data-filter="powerbi">Power BI</button>
+        </div>
 
-          <div class="col-lg-10">
-            <div class="info-wrap">
-              <div class="row gy-4">
-                <div class="col-md-4 info-item">
-                  <i class="bi bi-geo-alt"></i>
-                  <h3>Location</h3>
-                  <p>Torino, Italy</p>
-                </div>
-                <div class="col-md-4 info-item">
-                  <i class="bi bi-telephone"></i>
-                  <h3>Call</h3>
-                  <p>+8801677266724</p>
-                </div>
-                <div class="col-md-4 info-item">
-                  <i class="bi bi-envelope"></i>
-                  <h3>Email</h3>
-                  <p>miraj.ahmed.works@gmail.com</p>
-                </div>
-              </div>
+        <div class="card-grid" id="projectGrid">
+
+          <div class="card project-item reveal" data-cat="academic">
+            <a href="fyp.html" target="_blank" class="card-link" aria-label="Accident Notification System case study"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/fyp_cover.webp" alt="Accident Notification System" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">Academic</span>
+              <h4>Accident Notification System</h4>
+              <p class="sub">Final Year Project (Academic)</p>
             </div>
           </div>
 
-          <div class="col-lg-10 mt-4">
-            <form class="sample-contact-form">
-              <div class="row gy-4">
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-                </div>
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
-                </div>
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
-                </div>
-                <div class="col-md-12 text-center">
-                  <button type="submit">Send Message</button>
-                </div>
-              </div>
-            </form>
+          <div class="card project-item reveal" data-cat="powerbi" data-delay="1">
+            <a href="internship.html" target="_blank" class="card-link" aria-label="Education Impact Analysis case study"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/internship_cover.webp" alt="Education Impact Analysis" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">Power BI</span>
+              <h4>Education Impact Analysis</h4>
+              <p class="sub">Internship Project</p>
+            </div>
+          </div>
+
+          <div class="card project-item reveal" data-cat="python" data-delay="2">
+            <a href="https://colab.research.google.com/drive/1LJVhKhEURppX0q6lu1ScFajFdnImXv4M?usp=sharing"
+              target="_blank" rel="noopener" class="card-link" aria-label="Vision Transformer notebook"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/vit_project.webp" alt="Vision Transformer project" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">AI/ML</span>
+              <h4>Vision Transformer (ViT)</h4>
+              <p class="sub">Image Classification from scratch</p>
+            </div>
+          </div>
+
+          <div class="card project-item reveal" data-cat="python">
+            <a href="https://www.datacamp.com/datalab/w/d299df23-ccb3-4604-b282-6e2dfb450924/edit" target="_blank"
+              rel="noopener" class="card-link" aria-label="Recipe Engagement Prediction notebook"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/recipe_site.webp" alt="Recipe Engagement Prediction" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">AI/ML</span>
+              <h4>Recipe Engagement Prediction</h4>
+              <p class="sub">Machine Learning Model</p>
+            </div>
+          </div>
+
+          <div class="card project-item reveal" data-cat="python" data-delay="1">
+            <a href="bcg_customer_churn.html" target="_blank" class="card-link" aria-label="BCG Customer Churn case study"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/bcg_project.webp" alt="BCG Customer Churn Prediction" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">AI/ML</span>
+              <h4>Customer Churn Prediction</h4>
+              <p class="sub">Random Forest (90% Accuracy)</p>
+            </div>
+          </div>
+
+          <div class="card project-item reveal" data-cat="python" data-delay="2">
+            <a href="ab_testing.html" target="_blank" class="card-link" aria-label="A/B Testing case study"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/ab_testing_cover.webp" alt="A/B Testing project" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">AI/ML</span>
+              <h4>AB Testing</h4>
+              <p class="sub">Website Theme Engagement</p>
+            </div>
+          </div>
+
+          <div class="card project-item reveal" data-cat="tableau">
+            <a href="datacamp.html" target="_blank" class="card-link" aria-label="Churn Analysis case study"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/datacamp_cover.webp" alt="Churn Analysis Tableau case study" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">Tableau</span>
+              <h4>Churn Analysis</h4>
+              <p class="sub">DataCamp Case Study</p>
+            </div>
+          </div>
+
+          <div class="card project-item reveal" data-cat="powerbi" data-delay="1">
+            <a href="weather_dashboard.html" target="_blank" class="card-link" aria-label="Weather Dashboard case study"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/weather_dashboard_cover.webp" alt="Weather Dashboard" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">Power BI</span>
+              <h4>Weather Dashboard</h4>
+              <p class="sub">Real-Time Power BI</p>
+            </div>
+          </div>
+
+          <div class="card project-item reveal" data-cat="powerbi" data-delay="2">
+            <a href="fitness_dashboard.html" target="_blank" class="card-link" aria-label="Fitness Analytics case study"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/fitness_dashboard.webp" alt="Fitness Analytics dashboard" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">Power BI</span>
+              <h4>Fitness Analytics</h4>
+              <p class="sub">Dashboard &amp; Calculator</p>
+            </div>
+          </div>
+
+          <div class="card project-item reveal" data-cat="tableau">
+            <a href="kpmg.html" target="_blank" class="card-link" aria-label="KPMG Demographic Analysis case study"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/kpmg_cover.webp" alt="KPMG Demographic Analysis" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">Tableau</span>
+              <h4>Demographic Analysis</h4>
+              <p class="sub">KPMG Virtual Internship</p>
+            </div>
+          </div>
+
+          <div class="card project-item reveal" data-cat="python" data-delay="1">
+            <a href="british_airways.html" target="_blank" class="card-link" aria-label="British Airways case study"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/british_airways_cover.webp" alt="British Airways Buying Behavior Prediction" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">AI/ML</span>
+              <h4>Buying Behavior Prediction</h4>
+              <p class="sub">British Airways Internship</p>
+            </div>
+          </div>
+
+          <div class="card project-item reveal" data-cat="tableau" data-delay="2">
+            <a href="jpmorgan.html" target="_blank" class="card-link" aria-label="JPMorgan Chase case study"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/jpmorgan_cover.webp" alt="JPMorgan Sales and Demographic analysis" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">Tableau</span>
+              <h4>Sales &amp; Demographic</h4>
+              <p class="sub">JPMorgan Chase Internship</p>
+            </div>
+          </div>
+
+          <div class="card project-item reveal" data-cat="powerbi">
+            <a href="fitness_tracker.html" target="_blank" class="card-link" aria-label="Fitness Tracker App case study"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/app_cover.webp" alt="Fitness Tracker App dashboard" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">Power BI</span>
+              <h4>Fitness Tracker App</h4>
+              <p class="sub">Power BI Dashboard</p>
+            </div>
+          </div>
+
+          <div class="card project-item reveal" data-cat="python" data-delay="1">
+            <a href="attrition.html" target="_blank" class="card-link" aria-label="Employee Attrition case study"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/google_cover.webp" alt="Employee Attrition prediction" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">AI/ML</span>
+              <h4>Employee Attrition</h4>
+              <p class="sub">Google Capstone Project</p>
+            </div>
+          </div>
+
+          <div class="card project-item reveal" data-cat="tableau" data-delay="2">
+            <a href="accenture.html" target="_blank" class="card-link" aria-label="Accenture User Engagement case study"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/accenture_cover.webp" alt="Accenture User Engagement analysis" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">Tableau</span>
+              <h4>User Engagement</h4>
+              <p class="sub">Accenture Internship</p>
+            </div>
+          </div>
+
+          <div class="card project-item reveal" data-cat="python">
+            <a href="imdb.html" target="_blank" class="card-link" aria-label="IMDB EDA case study"></a>
+            <span class="arrow">&#x2197;</span>
+            <div class="thumb"><img src="img/portfolio/imdb__cover.webp" alt="IMDB exploratory data analysis" loading="lazy"></div>
+            <div class="body">
+              <span class="tag">AI/ML</span>
+              <h4>IMDB EDA</h4>
+              <p class="sub">Exploratory Data Analysis</p>
+            </div>
           </div>
 
         </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <p class="data-label">contact &mdash; always open</p>
+          <h2>Contact</h2>
+          <p>Let's discuss your data needs.</p>
+        </div>
+
+        <div class="contact-info">
+          <div class="info-card reveal">
+            <div class="glyph">&#128205;</div>
+            <h3>Location</h3>
+            <p>Torino, Italy</p>
+          </div>
+          <div class="info-card reveal" data-delay="1">
+            <div class="glyph">&#128222;</div>
+            <h3>Call</h3>
+            <p>+8801677266724</p>
+          </div>
+          <div class="info-card reveal" data-delay="2">
+            <div class="glyph">&#9993;</div>
+            <h3>Email</h3>
+            <p>miraj.ahmed.works@gmail.com</p>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <input type="text" name="subject" class="full" placeholder="Subject" required>
+          <textarea name="message" class="full" rows="6" placeholder="Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
       </div>
     </section>
 
   </main>
 
-  <footer id="footer" class="footer">
-    <div class="container text-center">
-      <div class="social-links d-flex justify-content-center mb-3">
-        <a href="https://twitter.com/symanto_"><i class="bi bi-twitter-x"></i></a>
-        <a href="https://www.linkedin.com/in/mirajsym/"><i class="bi bi-linkedin"></i></a>
-        <a href="https://github.com/mirajSYM02"><i class="bi bi-github"></i></a>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="socials">
+        <a href="https://twitter.com/symanto_" aria-label="Twitter">
+          <svg viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/mirajsym/" aria-label="LinkedIn">
+          <svg viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg>
+        </a>
+        <a href="https://github.com/mirajSYM02" aria-label="GitHub">
+          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
+        </a>
       </div>
-      <div class="copyright">
-        <p>&copy; 2024 <strong>Miraj Ahmed</strong>. All Rights Reserved</p>
-      </div>
+      <p>&copy; 2024 <strong>Miraj Ahmed</strong>. All Rights Reserved</p>
+      <p class="mono-sign">built with html + css &mdash; 0 dependencies</p>
     </div>
   </footer>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
-  <div id="preloader"></div>
+  <a href="#top" class="scroll-top" id="scrollTop" aria-label="Scroll to top">&uarr;</a>
 
-  <div id="myImageModal" class="image-modal">
-    <span class="modal-close">&times;</span>
-    <img class="modal-content" id="img01">
-    <div id="caption"></div>
+  <div id="imageModal" class="image-modal" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="close" aria-label="Close preview">&times;</button>
+    <img id="modalImg" alt="">
+    <div class="caption" id="modalCaption"></div>
   </div>
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/site.js"></script>
 
 </body>
 

@@ -13,199 +13,165 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/css/home.css" rel="stylesheet">
 
-  <link href="assets/css/main.css" rel="stylesheet">
+  <script>
+    (function () {
+      var t = localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
 </head>
 
-<body class="portfolio-details-page">
+<body>
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center">
-        <h1 class="sitename">Miraj.</h1>
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-
-
-
-        <div class="theme-switch-wrapper">
-          <label class="theme-switch" for="checkbox" title="Toggle Dark Mode">
-            <input type="checkbox" id="checkbox" />
-            <div class="slider round">
-              <i class="bi bi-sun-fill sun-icon"></i>
-              <i class="bi bi-moon-fill moon-icon"></i>
-            </div>
-          </label>
-        </div>
-
-
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="logo">Miraj<span>.</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#about">About</a>
+        <a href="index.html#resume">Resume</a>
+        <a href="index.html#certifications">Certifications</a>
+        <a href="index.html#portfolio">Projects</a>
+        <a href="index.html#contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+          <span class="icon-moon">&#9789;</span>
+          <span class="icon-sun">&#9728;</span>
+        </button>
       </nav>
-
     </div>
   </header>
 
-  <main class="main">
+  <main id="top">
 
-    <div class="page-title" data-aos="fade">
-      <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Mortgage Data Analysis</h1>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#portfolio">Projects</a></li>
-            <li class="current">JP Morgan Chase</li>
-          </ol>
+    <div class="page-head">
+      <div class="wrap">
+        <p class="data-label">case study</p>
+        <h1>Mortgage Data Analysis</h1>
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span class="sep">/</span><a href="index.html#portfolio">Projects</a><span class="sep">/</span><span>JP Morgan Chase</span>
         </nav>
       </div>
     </div>
 
-    <section id="portfolio-details" class="portfolio-details section">
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
+    <section class="case">
+      <div class="wrap">
         <div class="row gy-4">
-
-          <div class="col-lg-4 order-lg-2">
-            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
-              <h3>Project Information</h3>
-              <ul>
-                <li><strong>Category</strong>: Data Analysis / Strategy</li>
-                <li><strong>Client</strong>: JP Morgan Chase (Forage)</li>
-                <li><strong>Tools</strong>: Excel, Tableau, Lucidchart</li>
-                <li><strong>Focus</strong>: Sales & Demographic Insights</li>
-                <li><strong>Live Demo</strong>: <a
-                    href="https://public.tableau.com/views/JPMorganChaseCoMortgageDataAnalysisVirtualInternship/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
-                    target="_blank" class="btn-visit">View Dashboard</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-lg-8 order-lg-1">
-            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
-
-              <h2>Sales and Demographic Insights</h2>
-              <p class="lead">
-                A comprehensive analysis of mortgage data to extract meaningful business insights, leveraging Excel for
-                processing and Tableau for visualization to inform sales strategies.
-              </p>
-
-              <div class="my-4">
-                <img src="img/portfolio/jp_morgan_certificate.webp" alt="JP Morgan Certificate"
-                  class="img-fluid rounded shadow-sm w-100">
-              </div>
-
-              <h3>Situation</h3>
-              <p>
-                We focused on a <strong>home loan dataset</strong> containing approximately <strong>500 data
-                  points</strong>. The goal was to identify key trends and insights to inform sales strategies and
-                improve business operations. The dataset required significant cleaning and processing to ensure
-                accuracy.
-              </p>
-
-              <div class="my-4">
-                <img src="img/portfolio/jp_morgan_dashboard.webp" alt="JP Morgan Tableau Dashboard"
-                  class="img-fluid rounded shadow-sm w-100">
-                <p class="text-center mt-2 text-muted small"><em>Interactive Tableau Dashboard</em></p>
-              </div>
-
-              <h3>Task</h3>
-              <p>The primary task was to perform detailed data analysis and create visualizations to uncover actionable
-                insights across dimensions such as:</p>
-              <ul>
-                <li>Buyer demographics (Age, Income).</li>
-                <li>Loan-to-value ratios vs. Median family income.</li>
-                <li>Debt-to-income ratios in minority-prone areas.</li>
-                <li>Home value distribution.</li>
-              </ul>
-
-              <h3>Action</h3>
-
-              <div class="row mt-3">
-                <div class="col-md-6 mb-3">
-                  <div class="p-3 border rounded bg-light h-100">
-                    <h6 class="fw-bold text-primary">1. Data Analysis (Excel)</h6>
-                    <p class="small mb-0">Cleaned the raw dataset and created pivot charts to derive insights on
-                      loan-to-value ratios and trends among first-time vs. second-time buyers.</p>
-                  </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <div class="p-3 border rounded bg-light h-100">
-                    <h6 class="fw-bold text-primary">2. Visualization (Tableau)</h6>
-                    <p class="small mb-0">Designed a dynamic dashboard to showcase economic landscapes and area-specific
-                      insights using interactive filters.</p>
-                  </div>
-                </div>
-              </div>
-
-              <h3>Result & Key Insights</h3>
-              <p>The comprehensive analysis yielded specific strategic recommendations:</p>
-
-              <ul class="list-group list-group-flush mb-4">
-                <li class="list-group-item">
-                  <strong>Target Demographics:</strong> The <strong>35-44 age range</strong> is the most suitable target
-                  for sales strategies, showing a high concentration of both first-time and repeat buyers.
-                </li>
-                <li class="list-group-item">
-                  <strong>Loan Products:</strong> There is high demand for mortgages within specific Loan-to-Value
-                  ranges, suggesting opportunities for competitive rate offers.
-                </li>
-                <li class="list-group-item">
-                  <strong>Market Opportunities:</strong> Identified opportunities for targeted financial solutions and
-                  community engagement in minority-prone areas.
-                </li>
-                <li class="list-group-item">
-                  <strong>Economic Landscape:</strong> Home values are normally distributed with an average of
-                  approximately <strong>$430K</strong>.
-                </li>
-              </ul>
-
-              <p>
-                This structured analysis provided a robust foundation for informed decision-making, allowing JP Morgan
-                Chase to tailor their mortgage products to specific demographic needs.
-              </p>
-
-            </div>
-          </div>
-
+        <div class="col-lg-4 order-lg-2 reveal">
+        <div class="portfolio-info">
+        <h3>Project Information</h3>
+        <ul>
+        <li><strong>Category</strong>: Data Analysis / Strategy</li>
+        <li><strong>Client</strong>: JP Morgan Chase (Forage)</li>
+        <li><strong>Tools</strong>: Excel, Tableau, Lucidchart</li>
+        <li><strong>Focus</strong>: Sales &amp; Demographic Insights</li>
+        <li><strong>Live Demo</strong>: <a class="btn-visit" href="https://public.tableau.com/views/JPMorganChaseCoMortgageDataAnalysisVirtualInternship/Dashboard1?:language=en-US&amp;:sid=&amp;:redirect=auth&amp;:display_count=n&amp;:origin=viz_share_link" rel="noopener" target="_blank">View Dashboard</a></li>
+        </ul>
         </div>
-
+        </div>
+        <div class="col-lg-8 order-lg-1 reveal">
+        <div class="portfolio-description">
+        <h2>Sales and Demographic Insights</h2>
+        <p class="lead">
+                        A comprehensive analysis of mortgage data to extract meaningful business insights, leveraging Excel for
+                        processing and Tableau for visualization to inform sales strategies.
+                      </p>
+        <div class="my-4">
+        <img alt="JP Morgan Certificate" class="img-fluid rounded shadow-sm w-100" loading="lazy" src="img/portfolio/jp_morgan_certificate.webp"/>
+        </div>
+        <h3>Situation</h3>
+        <p>
+                        We focused on a <strong>home loan dataset</strong> containing approximately <strong>500 data
+                          points</strong>. The goal was to identify key trends and insights to inform sales strategies and
+                        improve business operations. The dataset required significant cleaning and processing to ensure
+                        accuracy.
+                      </p>
+        <div class="my-4">
+        <img alt="JP Morgan Tableau Dashboard" class="img-fluid rounded shadow-sm w-100" loading="lazy" src="img/portfolio/jp_morgan_dashboard.webp"/>
+        <p class="text-center mt-2 text-muted small"><em>Interactive Tableau Dashboard</em></p>
+        </div>
+        <h3>Task</h3>
+        <p>The primary task was to perform detailed data analysis and create visualizations to uncover actionable
+                        insights across dimensions such as:</p>
+        <ul>
+        <li>Buyer demographics (Age, Income).</li>
+        <li>Loan-to-value ratios vs. Median family income.</li>
+        <li>Debt-to-income ratios in minority-prone areas.</li>
+        <li>Home value distribution.</li>
+        </ul>
+        <h3>Action</h3>
+        <div class="row mt-3">
+        <div class="col-md-6 mb-3">
+        <div class="p-3 border rounded bg-light h-100">
+        <h6 class="fw-bold text-primary">1. Data Analysis (Excel)</h6>
+        <p class="small mb-0">Cleaned the raw dataset and created pivot charts to derive insights on
+                              loan-to-value ratios and trends among first-time vs. second-time buyers.</p>
+        </div>
+        </div>
+        <div class="col-md-6 mb-3">
+        <div class="p-3 border rounded bg-light h-100">
+        <h6 class="fw-bold text-primary">2. Visualization (Tableau)</h6>
+        <p class="small mb-0">Designed a dynamic dashboard to showcase economic landscapes and area-specific
+                              insights using interactive filters.</p>
+        </div>
+        </div>
+        </div>
+        <h3>Result &amp; Key Insights</h3>
+        <p>The comprehensive analysis yielded specific strategic recommendations:</p>
+        <ul class="list-group list-group-flush mb-4">
+        <li class="list-group-item">
+        <strong>Target Demographics:</strong> The <strong>35-44 age range</strong> is the most suitable target
+                          for sales strategies, showing a high concentration of both first-time and repeat buyers.
+                        </li>
+        <li class="list-group-item">
+        <strong>Loan Products:</strong> There is high demand for mortgages within specific Loan-to-Value
+                          ranges, suggesting opportunities for competitive rate offers.
+                        </li>
+        <li class="list-group-item">
+        <strong>Market Opportunities:</strong> Identified opportunities for targeted financial solutions and
+                          community engagement in minority-prone areas.
+                        </li>
+        <li class="list-group-item">
+        <strong>Economic Landscape:</strong> Home values are normally distributed with an average of
+                          approximately <strong>$430K</strong>.
+                        </li>
+        </ul>
+        <p>
+                        This structured analysis provided a robust foundation for informed decision-making, allowing JP Morgan
+                        Chase to tailor their mortgage products to specific demographic needs.
+                      </p>
+        </div>
+        </div>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <footer id="footer" class="footer">
-    <div class="container text-center">
-      <div class="social-links d-flex justify-content-center mb-3">
-        <a href="https://twitter.com/symanto_"><i class="bi bi-twitter-x"></i></a>
-        <a href="https://www.linkedin.com/in/mirajsym/"><i class="bi bi-linkedin"></i></a>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="socials">
+        <a href="https://twitter.com/symanto_" aria-label="Twitter">
+          <svg viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/mirajsym/" aria-label="LinkedIn">
+          <svg viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg>
+        </a>
+        <a href="https://github.com/mirajSYM02" aria-label="GitHub">
+          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
+        </a>
       </div>
-      <div class="copyright">
-        <p>&copy; 2024 <strong>Miraj Ahmed</strong>. All Rights Reserved</p>
-      </div>
+      <p>&copy; 2024 <strong>Miraj Ahmed</strong>. All Rights Reserved</p>
+      <p class="mono-sign">built with html + css &mdash; 0 dependencies</p>
     </div>
   </footer>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
-  <div id="preloader"></div>
+  <a href="#top" class="scroll-top" id="scrollTop" aria-label="Scroll to top">&uarr;</a>
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/site.js"></script>
 
 </body>
 
