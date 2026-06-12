@@ -138,6 +138,29 @@
     });
   }
 
+  /* Hover video previews: add data-video="path.mp4" to any .thumb.
+     Video is created lazily on first hover, plays muted, reverts on leave. */
+  if (window.matchMedia("(hover: hover)").matches) {
+    document.querySelectorAll(".thumb[data-video]").forEach(function (thumb) {
+      var vid = null;
+      thumb.closest(".card").addEventListener("pointerenter", function () {
+        if (!vid) {
+          vid = document.createElement("video");
+          vid.src = thumb.getAttribute("data-video");
+          vid.muted = true;
+          vid.loop = true;
+          vid.playsInline = true;
+          vid.preload = "none";
+          thumb.appendChild(vid);
+        }
+        vid.play().then(function () { vid.classList.add("playing"); }).catch(function () {});
+      });
+      thumb.closest(".card").addEventListener("pointerleave", function () {
+        if (vid) { vid.pause(); vid.classList.remove("playing"); }
+      });
+    });
+  }
+
   /* Image modal (certificate / document previews) */
   var modal = document.getElementById("imageModal");
   if (modal) {
