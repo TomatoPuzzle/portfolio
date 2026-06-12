@@ -54,7 +54,10 @@
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip; /* mobile browsers ignore overflow-x on body alone */
+}
 
 body {
   margin: 0;
@@ -483,6 +486,22 @@ section { padding: 100px 0; }
   .hero-panel { margin-bottom: 140px; }
 }
 
+/* phone-size panel: smaller chart, padding, and boy */
+@media (max-width: 600px) {
+  .hero { padding: 72px 0 48px; }
+  .hero-panel {
+    padding: 16px 16px 18px;
+    margin-bottom: 118px;
+    box-shadow: 5px 5px 0 rgba(var(--accent-rgb), 0.9);
+  }
+  .bars { height: 88px; gap: 7px; margin-bottom: 12px; }
+  .panel-spark svg { height: 30px; }
+  .panel-spark .delta { font-size: 17px; }
+  .panel-legend span { font-size: 10px; padding: 3px 8px; }
+  .doodle-boy { width: 84px; right: 14px; }
+  .strain-label { font-size: 18px; right: 104px; top: calc(100% + 36px); }
+}
+
 /* ---------- Doodle cast (inline SVG, ~1KB each, zero requests) ---------- */
 .dfig { overflow: visible; pointer-events: none; }
 
@@ -580,8 +599,9 @@ section { padding: 100px 0; }
   padding: 16px 0;
   overflow: hidden;
   background: var(--accent);
-  transform: rotate(-1deg) scale(1.02);
-  margin: 10px 0;
+  transform: rotate(-1deg);
+  width: 104%;
+  margin: 10px -2%;
 }
 
 .marquee-track {
