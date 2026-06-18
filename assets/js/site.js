@@ -201,4 +201,50 @@
       window.location.href = "mailto:miraj.ahmed.works@gmail.com?subject=" + subject + "&body=" + body;
     });
   }
+
+  /* Mascot peeks up behind a hovered Certification / Project card.
+     One shared element (#kidPeek); hover-capable pointers only. */
+  var kidPeek = document.getElementById("kidPeek");
+  if (kidPeek && window.matchMedia("(hover: hover)").matches) {
+    var kidSay = document.getElementById("kidPeekSay");
+    var activeCard = null;
+
+    function placePeek(card) {
+      var r = card.getBoundingClientRect();
+      var w = kidPeek.offsetWidth || 70;
+      var h = kidPeek.offsetHeight || 96;
+      // sit just above the card's top edge, hands gripping the border
+      var left = r.left + r.width * 0.16;
+      var top = r.top - h + 18;
+      // keep it on-screen near the top
+      if (top < 6) top = 6;
+      left = Math.max(6, Math.min(left, window.innerWidth - w - 6));
+      kidPeek.style.left = left + "px";
+      kidPeek.style.top = top + "px";
+    }
+
+    function showPeek(card) {
+      activeCard = card;
+      var inCerts = !!card.closest("#certifications");
+      kidSay.textContent = inCerts ? "press to make it big!" : "press to open!";
+      placePeek(card);
+      // reflow then animate in
+      requestAnimationFrame(function () { kidPeek.classList.add("show"); });
+    }
+    function hidePeek() {
+      activeCard = null;
+      kidPeek.classList.remove("show");
+    }
+
+    var peekCards = document.querySelectorAll("#certifications .card, #portfolio .card");
+    peekCards.forEach(function (card) {
+      card.addEventListener("pointerenter", function () { showPeek(card); });
+      card.addEventListener("pointerleave", function () { hidePeek(); });
+    });
+
+    var reposition = function () { if (activeCard) placePeek(activeCard); };
+    window.addEventListener("scroll", reposition, { passive: true });
+    window.addEventListener("resize", reposition);
+  }
+
 })();
