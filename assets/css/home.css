@@ -1178,3 +1178,7 @@ section { padding: 100px 0; }
   .kid .k-wave, #kidPeek.show .kid { animation: none; }
   #kidPeek { transition: opacity .01ms; }
 }
+
+@media (max-width: 480px) {
+  .about-photo .mascot-wrapper { display: none; }
+}
